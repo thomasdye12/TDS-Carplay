@@ -23,7 +23,7 @@ Please make issues here and tell me about what youd like in the app or your prob
 
 ## Support 
 
-Buy me a coffie - https://github.com/thomasdye12/TDS-Carplay/tree/main
+Buy me a coffie - https://buymeacoffee.com/Thomadye
 
 
 
