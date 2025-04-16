@@ -8,6 +8,7 @@ TDS Carplay is an app that allows you to view videos and show your screen on you
 ## Links 
 Test flight download link - [TDS CarPlay](https://testflight.apple.com/join/1Z9HQgNw) 
 
+It appears there is a limit of 10,000 users. sorry we have reached that, i will work on geting it in the app store.
 
 Youtube Video tutoral - https://youtu.be/gI3Tj2KP290 
 
