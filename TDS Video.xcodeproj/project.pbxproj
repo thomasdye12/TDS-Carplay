@@ -17,6 +17,7 @@
 		E98E7DCC2D8DF6FB008330D0 /* CustomWebViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98E7DCB2D8DF6F5008330D0 /* CustomWebViews.swift */; };
 		E9B01D3E2DAFD0E4008CDD3F /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = E9B01D3D2DAFD0E4008CDD3F /* Swifter */; };
 		E9B01D412DAFD57D008CDD3F /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = E9B01D402DAFD57D008CDD3F /* Swifter */; };
+		E9B01EC82DB094DF008CDD3F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E9B01EC72DB094DF008CDD3F /* README.md */; };
 		E9B371A02C5D85D60013612E /* CarPlaySceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B3719F2C5D85D60013612E /* CarPlaySceneDelegate.swift */; };
 		E9B371A82C5D86080013612E /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9B371A72C5D86080013612E /* Intents.framework */; };
 		E9B371B32C5D86080013612E /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9B371B22C5D86080013612E /* IntentsUI.framework */; };
@@ -92,6 +93,7 @@
 		E96BB73F2D32872D007BE3A8 /* ScreenRecSetupUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ScreenRecSetupUI.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E96BB7412D32872D007BE3A8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E98E7DCB2D8DF6F5008330D0 /* CustomWebViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWebViews.swift; sourceTree = "<group>"; };
+		E9B01EC72DB094DF008CDD3F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E9B3711F2C5D7B830013612E /* TDS Video.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TDS Video.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9B3719F2C5D85D60013612E /* CarPlaySceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPlaySceneDelegate.swift; sourceTree = "<group>"; };
 		E9B371A52C5D86080013612E /* Carplayintent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Carplayintent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -278,6 +280,7 @@
 		E9B371162C5D7B830013612E = {
 			isa = PBXGroup;
 			children = (
+				E9B01EC72DB094DF008CDD3F /* README.md */,
 				E9D513592D79B5C800B8A8B3 /* CarPlayViewContollerProtocal.swift */,
 				E9449D242C616DAF00EE64DF /* CarplayWKWebView.swift */,
 				E92F0F312DABD34F00ACB85D /* CarPlaySafari.swift */,
@@ -545,6 +548,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9B01EC82DB094DF008CDD3F /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
