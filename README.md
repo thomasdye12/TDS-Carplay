@@ -1,5 +1,6 @@
 # TDS-CarPlay
 
+![Downloads](https://api.thomasdye.net/app/ThomasRandom/TDSVideo/AmountOfDownloads)
 
 # This app is not meant to be used while driving 
 
