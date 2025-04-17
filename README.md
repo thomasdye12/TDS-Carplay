@@ -18,7 +18,7 @@ Youtube Video tutorial - https://youtu.be/gI3Tj2KP290
 There will soon be another testflight version for you to download here, please only download this one if you are not in the other one, this allows more people to have access. 
 
 
-### Seeing the TDS video screen - want access to carPlay
+### Seeing the Welcome to TDS video screen - want access to carPlay
 
 If you are seeing the screen talking about the web view feature and you want the carplay features you can access this quickly, This screen is so that Apple and others who might download the app do not see and understand how it works. 
 

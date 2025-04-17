@@ -2155,10 +2155,10 @@
             filePath = "CarPlaySceneDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
-            landmarkName = "CarPlaySceneDelegate"
-            landmarkType = "3">
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "playVideo(url:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2171,9 +2171,9 @@
             filePath = "CarPlaySceneDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "rawVideo(player:)"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "playVideo(url:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2187,9 +2187,9 @@
             filePath = "CarPlaySceneDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
-            landmarkName = "rawVideo(player:)"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "playVideo(url:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2203,9 +2203,9 @@
             filePath = "CarPlaySceneDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
-            landmarkName = "rawVideo(player:)"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "playVideo(url:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

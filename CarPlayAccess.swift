@@ -13,14 +13,16 @@ class TDSCarplayAccess {
     
     private let settingsKey = "ShowTDSCarPlaySettings"
     
-    var ShowTDSCarPlaySettings: Bool {
-        get {
-            UserDefaults.standard.bool(forKey: settingsKey)
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: settingsKey)
-        }
-    }
+    var ShowTDSCarPlaySettings: Bool = true
+    
+//    {
+//        get {
+//            UserDefaults.standard.bool(forKey: settingsKey)
+//        }
+//        set {
+//            UserDefaults.standard.set(newValue, forKey: settingsKey)
+//        }
+//    }
 
     private init() {
         // Optionally initialize from UserDefaults here if needed

@@ -54,7 +54,10 @@ class CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate, CPM
                                   didConnect interfaceController: CPInterfaceController, to window: CPWindow) {
         
 
-
+        if TDSCarplayAccess.shared.ShowTDSCarPlaySettings == false  {
+            
+            return
+        }
         let bool:Bool = templateApplicationScene._shouldCreateCarWindow()
         print(bool)
         /*emplateApplicationScene.test()*/
@@ -243,7 +246,7 @@ class CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate, CPM
          // Properly add the CustomWebViewController's view to the window
          if let rootViewController = self.window?.rootViewController {
              CarPlayVideoImageView.backgroundColor = .black
-             CarPlayVideoImageView.contentMode = .init(rawValue: ScreenCaptureManager.shared.selectedAspectRatio.rawValue) ??  .scaleAspectFit
+             CarPlayVideoImageView.contentMode = .init(rawValue: ScreenCaptureManager.shared.selectedAspectRatio.rawValue) ??  .scaleAspectFill
              rootViewController.view.addSubview(CarPlayVideoImageView)
              CarPlayVideoImageView.translatesAutoresizingMaskIntoConstraints = false
              NSLayoutConstraint.activate([
