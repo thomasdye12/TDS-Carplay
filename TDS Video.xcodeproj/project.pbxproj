@@ -42,20 +42,6 @@
 			remoteGlobalIDString = E96BB7332D32872C007BE3A8;
 			remoteInfo = ScreenRec;
 		};
-		E9B371362C5D7B850013612E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E9B371172C5D7B830013612E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E9B3711E2C5D7B830013612E;
-			remoteInfo = "TDS McdonaldsApi";
-		};
-		E9B371402C5D7B850013612E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E9B371172C5D7B830013612E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E9B3711E2C5D7B830013612E;
-			remoteInfo = "TDS McdonaldsApi";
-		};
 		E9B371BB2C5D86080013612E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E9B371172C5D7B830013612E /* Project object */;
@@ -107,8 +93,6 @@
 		E96BB7412D32872D007BE3A8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E98E7DCB2D8DF6F5008330D0 /* CustomWebViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWebViews.swift; sourceTree = "<group>"; };
 		E9B3711F2C5D7B830013612E /* TDS Video.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TDS Video.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E9B371352C5D7B850013612E /* TDS VideoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TDS VideoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E9B3713F2C5D7B850013612E /* TDS VideoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TDS VideoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9B3719F2C5D85D60013612E /* CarPlaySceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPlaySceneDelegate.swift; sourceTree = "<group>"; };
 		E9B371A52C5D86080013612E /* Carplayintent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Carplayintent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9B371A72C5D86080013612E /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
@@ -234,8 +218,6 @@
 		E96BB7372D32872C007BE3A8 /* ScreenRec */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (E96BB7542D32872D007BE3A8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = ScreenRec; sourceTree = "<group>"; };
 		E96BB7432D32872D007BE3A8 /* ScreenRecSetupUI */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (E96BB7502D32872D007BE3A8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = ScreenRecSetupUI; sourceTree = "<group>"; };
 		E9B371212C5D7B830013612E /* TDS Video */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (E9B371472C5D7B850013612E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, E9B3714B2C5D7B850013612E /* PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet */, E96BB78B2D3297BA007BE3A8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, E96BB78C2D3297BA007BE3A8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "TDS Video"; sourceTree = "<group>"; };
-		E9B371382C5D7B850013612E /* TDS VideoApiTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "TDS VideoApiTests"; sourceTree = "<group>"; };
-		E9B371422C5D7B850013612E /* TDS VideoApiUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "TDS VideoApiUITests"; sourceTree = "<group>"; };
 		E9B371A92C5D86080013612E /* Carplayintent */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (E9B371C92C5D86080013612E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Carplayintent; sourceTree = "<group>"; };
 		E9B371B42C5D86080013612E /* CarplayintentUI */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (E9B371C42C5D86080013612E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, E9B371C52C5D86080013612E /* PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = CarplayintentUI; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -274,20 +256,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E9B371322C5D7B850013612E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E9B3713C2C5D7B850013612E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E9B371A22C5D86080013612E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -317,8 +285,6 @@
 				E9B5432A2C60EEE700BCD407 /* CustomVideoPlayerViewController.swift */,
 				E98E7DCB2D8DF6F5008330D0 /* CustomWebViews.swift */,
 				E9B371212C5D7B830013612E /* TDS Video */,
-				E9B371382C5D7B850013612E /* TDS VideoApiTests */,
-				E9B371422C5D7B850013612E /* TDS VideoApiUITests */,
 				E9B371A92C5D86080013612E /* Carplayintent */,
 				E9B371B42C5D86080013612E /* CarplayintentUI */,
 				E9449D152C616C4100EE64DF /* UploadVideo */,
@@ -333,8 +299,6 @@
 			isa = PBXGroup;
 			children = (
 				E9B3711F2C5D7B830013612E /* TDS Video.app */,
-				E9B371352C5D7B850013612E /* TDS VideoTests.xctest */,
-				E9B3713F2C5D7B850013612E /* TDS VideoUITests.xctest */,
 				E9B371A52C5D86080013612E /* Carplayintent.appex */,
 				E9B371B12C5D86080013612E /* CarplayintentUI.appex */,
 				E9449D142C616C4100EE64DF /* UploadVideo.appex */,
@@ -454,52 +418,6 @@
 			productReference = E9B3711F2C5D7B830013612E /* TDS Video.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E9B371342C5D7B850013612E /* TDS VideoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E9B3714E2C5D7B850013612E /* Build configuration list for PBXNativeTarget "TDS VideoTests" */;
-			buildPhases = (
-				E9B371312C5D7B850013612E /* Sources */,
-				E9B371322C5D7B850013612E /* Frameworks */,
-				E9B371332C5D7B850013612E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E9B371372C5D7B850013612E /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				E9B371382C5D7B850013612E /* TDS VideoApiTests */,
-			);
-			name = "TDS VideoTests";
-			packageProductDependencies = (
-			);
-			productName = "TDS McdonaldsApiTests";
-			productReference = E9B371352C5D7B850013612E /* TDS VideoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		E9B3713E2C5D7B850013612E /* TDS VideoUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E9B371512C5D7B850013612E /* Build configuration list for PBXNativeTarget "TDS VideoUITests" */;
-			buildPhases = (
-				E9B3713B2C5D7B850013612E /* Sources */,
-				E9B3713C2C5D7B850013612E /* Frameworks */,
-				E9B3713D2C5D7B850013612E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E9B371412C5D7B850013612E /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				E9B371422C5D7B850013612E /* TDS VideoApiUITests */,
-			);
-			name = "TDS VideoUITests";
-			packageProductDependencies = (
-			);
-			productName = "TDS McdonaldsApiUITests";
-			productReference = E9B3713F2C5D7B850013612E /* TDS VideoUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		E9B371A42C5D86080013612E /* Carplayintent */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E9B371C62C5D86080013612E /* Build configuration list for PBXNativeTarget "Carplayintent" */;
@@ -567,14 +485,6 @@
 						CreatedOnToolsVersion = 16.0;
 						LastSwiftMigration = 1600;
 					};
-					E9B371342C5D7B850013612E = {
-						CreatedOnToolsVersion = 16.0;
-						TestTargetID = E9B3711E2C5D7B830013612E;
-					};
-					E9B3713E2C5D7B850013612E = {
-						CreatedOnToolsVersion = 16.0;
-						TestTargetID = E9B3711E2C5D7B830013612E;
-					};
 					E9B371A42C5D86080013612E = {
 						CreatedOnToolsVersion = 16.0;
 					};
@@ -600,8 +510,6 @@
 			projectRoot = "";
 			targets = (
 				E9B3711E2C5D7B830013612E /* TDS Video */,
-				E9B371342C5D7B850013612E /* TDS VideoTests */,
-				E9B3713E2C5D7B850013612E /* TDS VideoUITests */,
 				E9B371A42C5D86080013612E /* Carplayintent */,
 				E9B371B02C5D86080013612E /* CarplayintentUI */,
 				E9449D132C616C4100EE64DF /* UploadVideo */,
@@ -634,20 +542,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E9B3711D2C5D7B830013612E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E9B371332C5D7B850013612E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E9B3713D2C5D7B850013612E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -705,20 +599,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E9B371312C5D7B850013612E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E9B3713B2C5D7B850013612E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E9B371A12C5D86080013612E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -745,16 +625,6 @@
 			isa = PBXTargetDependency;
 			target = E96BB7332D32872C007BE3A8 /* ScreenRec */;
 			targetProxy = E96BB74A2D32872D007BE3A8 /* PBXContainerItemProxy */;
-		};
-		E9B371372C5D7B850013612E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E9B3711E2C5D7B830013612E /* TDS Video */;
-			targetProxy = E9B371362C5D7B850013612E /* PBXContainerItemProxy */;
-		};
-		E9B371412C5D7B850013612E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E9B3711E2C5D7B830013612E /* TDS Video */;
-			targetProxy = E9B371402C5D7B850013612E /* PBXContainerItemProxy */;
 		};
 		E9B371BC2C5D86080013612E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1154,78 +1024,6 @@
 			};
 			name = Release;
 		};
-		E9B3714F2C5D7B850013612E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = K3S7UENN8E;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.thomasdye.TDS-McdonaldsApiTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TDS Video.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TDS Video";
-			};
-			name = Debug;
-		};
-		E9B371502C5D7B850013612E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = K3S7UENN8E;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.thomasdye.TDS-McdonaldsApiTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TDS Video.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TDS Video";
-			};
-			name = Release;
-		};
-		E9B371522C5D7B850013612E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = K3S7UENN8E;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.thomasdye.TDS-McdonaldsApiUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "TDS McdonaldsApi";
-			};
-			name = Debug;
-		};
-		E9B371532C5D7B850013612E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = K3S7UENN8E;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.thomasdye.TDS-McdonaldsApiUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "TDS McdonaldsApi";
-			};
-			name = Release;
-		};
 		E9B371C22C5D86080013612E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1376,24 +1174,6 @@
 			buildConfigurations = (
 				E9B371492C5D7B850013612E /* Debug */,
 				E9B3714A2C5D7B850013612E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E9B3714E2C5D7B850013612E /* Build configuration list for PBXNativeTarget "TDS VideoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E9B3714F2C5D7B850013612E /* Debug */,
-				E9B371502C5D7B850013612E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E9B371512C5D7B850013612E /* Build configuration list for PBXNativeTarget "TDS VideoUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E9B371522C5D7B850013612E /* Debug */,
-				E9B371532C5D7B850013612E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
