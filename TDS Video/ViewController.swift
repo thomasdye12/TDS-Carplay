@@ -22,6 +22,24 @@ class ViewController: UIViewController {
         
         Task {
             
+            if TDSCarplayAccess.shared.ShowTDSCarPlaySettings == false  {
+                
+                
+                let hostingController = UIHostingController(rootView: TDSVideoMainScreen())
+                self.addChild(hostingController)
+                self.view.addSubview(hostingController.view)
+                hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+                NSLayoutConstraint.activate([
+                    hostingController.view.leadingAnchor.constraint(equalTo:  self.view.leadingAnchor),
+                    hostingController.view.trailingAnchor.constraint(equalTo:  self.view.trailingAnchor),
+                    hostingController.view.topAnchor.constraint(equalTo:  self.view.topAnchor),
+                    hostingController.view.bottomAnchor.constraint(equalTo:  self.view.bottomAnchor)
+                ])
+                hostingController.didMove(toParent: self)
+                
+                return
+            }
+            
             ScreenCaptureManager.shared.start()
     //        auth.APNSObject.RequestAPNS()
 
