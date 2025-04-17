@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>application-identifier</key>
+	<string>K3S7UENN8E.*</string>
+	<key>com.apple.developer.carplay-calling</key>
+	<true/>
+	<key>com.apple.developer.carplay-communication</key>
+	<true/>
+	<key>com.apple.developer.carplay-maps</key>
+	<true/>
+	<key>com.apple.developer.carplay-messaging</key>
+	<true/>
+	<key>com.apple.developer.team-identifier</key>
+	<string>K3S7UENN8E</string>
+	<key>com.apple.security.application-groups</key>
+	<array>
+		<string>group.net.thomasdye.Auth_Creds</string>
+	</array>
+	<key>get-task-allow</key>
+	<true/>
+	<key>keychain-access-groups</key>
+	<array>
+		<string>K3S7UENN8E.*</string>
+		<string>com.apple.token</string>
+	</array>
+</dict>
+</plist>
