@@ -73,6 +73,14 @@ Please make issues here and tell me about what you'd like in the app or your pro
 If you are liking the app it would really help if you'd buy me a coffee and support the feature development of the app and other things do.
 Buy me a coffee - https://buymeacoffee.com/Thomadye
 
+I would like to say a massive thank you to everyone who has downloaded my app, its way more popular then i ever thought it would be!
+
+If you are interested in updates please follow on one of the two bellow - I post updates there about what i am doing building and stuff all tech related.
+ 
+https://www.youtube.com/channel/UCn8DxUf388I1B7Lxzqv5KRw
+http://instagram.com/thomas_dye
+
+
 
 
 
