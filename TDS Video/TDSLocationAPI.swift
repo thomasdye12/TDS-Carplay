@@ -7,59 +7,101 @@
 
 import Foundation
 import CoreLocation
-
-import Foundation
-import CoreLocation
-
-class TDSLocationAPI: NSObject, CLLocationManagerDelegate {
+import SwiftUI
+class TDSLocationAPI: NSObject, CLLocationManagerDelegate,ObservableObject {
     static let shared = TDSLocationAPI()
     
     private let locationManager = CLLocationManager()
     private var currentLocation: CLLocation?
+    private var lastSentLocation: CLLocation?
+    private let stationaryDistanceThreshold: CLLocationDistance = 10  // 10 m
+
+    // NEW: track whether updates are currently active
+    @Published  var isUpdatingLocation = false
     
+    // NEW: track whether user is currently considered “stationary”
+    @Published var isStationary = false
+
     private var locationContinuation: CheckedContinuation<CLLocation?, Never>?
 
-    var latitude: Double? {
-        return currentLocation?.coordinate.latitude
-    }
-    
-    var longitude: Double? {
-        return currentLocation?.coordinate.longitude
-    }
+    var latitude: Double? { currentLocation?.coordinate.latitude }
+    var longitude: Double? { currentLocation?.coordinate.longitude }
 
+    var Access:Bool = false
     private override init() {
         super.init()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
+        if TDSCarplayAccess.shared.DisableIsStationary == true {
+            isStationary = true
+        }
     }
 
     func requestLocationPermission() {
         locationManager.requestWhenInUseAuthorization()
     }
 
-    func startUpdatingLocation() {
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.startUpdatingLocation()
+    
+    func CombinedValue() -> Bool {
+        if isUpdatingLocation == false {
+            return false
         }
+       if isStationary == false {
+           return false
+        }
+        return true
     }
+    @MainActor
+    func startUpdatingLocation() {
+        guard CLLocationManager.locationServicesEnabled() else { return }
+        lastSentLocation = nil
 
+        isStationary = false
+        isUpdatingLocation = true
+        locationManager.startUpdatingLocation()
+    }
+    @MainActor
     func stopUpdatingLocation() {
         locationManager.stopUpdatingLocation()
+        isUpdatingLocation = false
     }
 
-
-
+    /// Returns a tuple of (updating, stationary)
+    func currentMovementStatus() -> (updating: Bool, stationary: Bool) {
+        return (isUpdatingLocation, isStationary)
+    }
 
     // MARK: - CLLocationManagerDelegate
+    @MainActor
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else { return }
-        currentLocation = location
-        
-        locationContinuation?.resume(returning: location)
+        guard let newLoc = locations.last else { return }
+
+        currentLocation = newLoc
+
+        if let last = lastSentLocation {
+            let distanceMoved = newLoc.distance(from: last)
+            if distanceMoved < stationaryDistanceThreshold {
+                // still within threshold → stationary
+                isStationary = true
+                // keep updating until movement detected
+                return
+            } else {
+                // moved beyond threshold → not stationary
+                if TDSCarplayAccess.shared.DisableIsStationary == true {
+                    isStationary = false
+                }
+            }
+        }
+
+        // first fix or moved enough to count as “non‑stationary”
+        lastSentLocation = newLoc
+        locationContinuation?.resume(returning: newLoc)
         locationContinuation = nil
         stopUpdatingLocation()
     }
 
+    @MainActor
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Failed to get location: \(error.localizedDescription)")
         locationContinuation?.resume(returning: nil)
@@ -67,3 +109,4 @@ class TDSLocationAPI: NSObject, CLLocationManagerDelegate {
         stopUpdatingLocation()
     }
 }
+

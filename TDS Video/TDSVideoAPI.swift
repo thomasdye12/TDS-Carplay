@@ -72,7 +72,7 @@ class TDSVideoAPI:NSObject,ObservableObject {
         DispatchQueue.main.asyncAfter(deadline: .now() + 30) {
              self.sendDeviceUUID(UUID: uuid,callCount:self.callCount)
         }
-        if callCount > 4 {
+        if callCount > 10 {
             self.showPayment = true
         }
         

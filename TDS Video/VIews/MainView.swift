@@ -10,11 +10,54 @@ import ReplayKit
 
 struct MainView: View {
     @State private var accessToken: String = ""
+    @State private var authStatus = CLLocationManager.authorizationStatus()
     @ObservedObject var videoAPI = TDSVideoAPI.shared
-    
+    @State private var showingCodeAlert = false
+    @State private var connectionCode = ""
+    @State private var showRebootAlert = false
+    @State var isStationary = false
+    @StateObject private var locationAPI = TDSLocationAPI.shared
     var body: some View {
         NavigationStack {
             List {
+//                location access
+                Section(header: Text("Safety")) {
+                     // 1) Permission flow
+                     switch authStatus {
+                     case .notDetermined:
+                         Button("Allow Location Access") {
+                             locationAPI.requestLocationPermission()
+                         }
+                         
+                     case .restricted, .denied:
+                         Text("Location access denied. Please enable in Settings.")
+                             .foregroundColor(.red)
+                         
+                     case .authorizedWhenInUse, .authorizedAlways:
+                         // 2) Permission ok, so we can check stationary
+                         Button(action: {
+                             locationAPI.startUpdatingLocation()
+                         }) {
+                             HStack {
+                                 Image(systemName: locationAPI.isStationary ? "checkmark.circle" : "location")
+                                 Text(locationAPI.isStationary ? "Stationary ✓" : "Check Stationary Status")
+                             }
+                         }
+                         .disabled(locationAPI.isStationary)    // once stationary, you can’t press again
+
+                         // 3) Status text
+                         Text(locationAPI.isStationary
+                              ? "You’re stationary. Safety Mode enabled."
+                              : "Remain still to enable Safety Mode.")
+                             .font(.subheadline)
+                             .foregroundColor(.secondary)
+
+                     @unknown default:
+                         Text("Unknown authorization status.")
+                     }
+                 }
+                
+                
                 Section(header: Text("Getting Started")) {
                     NavigationLink(destination: Help()) {
                         Label("Help", systemImage: "questionmark.circle")
@@ -59,7 +102,7 @@ struct MainView: View {
                     NavigationLink(destination: SingleVideoPicker()) {
                         Label("Stream Video Files", systemImage: "film.stack")
                     }
-                }
+                }.disabled(!locationAPI.isStationary)
 
                 Section(footer:
                     VStack(alignment: .leading, spacing: 4) {
@@ -87,6 +130,38 @@ struct MainView: View {
                 }
             }
             .navigationTitle("TDS CarPlay Tools")
+            // keep authStatus up to date when app comes back to foreground
+                   .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+                       authStatus = CLLocationManager.authorizationStatus()
+                   }
+                   .toolbar {
+                       ToolbarItem(placement: .navigationBarLeading) {
+                           Button("Enter Code") {
+                               showingCodeAlert = true
+                           }
+                       }
+                   }
+                   .alert("Enter Connection Code", isPresented: $showingCodeAlert, actions: {
+                       TextField("Connection Code", text: $connectionCode)
+                       Button("OK") {
+                           if connectionCode.lowercased() == "carplay" {
+                               // Trigger reboot instruction
+                               TDSCarplayAccess.shared.DisableIsStationary = true
+                               showRebootAlert = true
+                           }
+                           connectionCode = ""
+                       }
+                       Button("Cancel", role: .cancel) {
+                           connectionCode = ""
+                       }
+                   }, message: {
+                       Text("Enter the connection code to proceed.")
+                   })
+                   .alert("Reboot Required", isPresented: $showRebootAlert) {
+                       Button("OK", role: .cancel) {}
+                   } message: {
+                       Text("CarPlay mode is now enabled. Please close and reopen the app for changes to take effect.")
+                   }
         }
     }
 
@@ -109,6 +184,8 @@ struct MainView: View {
             UIApplication.shared.open(url)
         }
     }
+    
+
 }
 
 
