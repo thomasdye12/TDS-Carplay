@@ -19,7 +19,7 @@ Test flight Beta link  (outdated) download link - [TDS CarPlay](https://testflig
 It appears there is a limit of 10,000 users. sorry we have reached that, i will work on getting it in the app store.
 
 Youtube Video tutorial - https://youtu.be/gI3Tj2KP290 
-
+I have an updated TestFlight Link - https://testflight.apple.com/join/6drWGVde Please use this link as needed, however if you download an don't like/ stop using please leave the test flight to allow someone else to join in your place 
 
 
 

@@ -14,7 +14,7 @@ class TDSLocationAPI: NSObject, CLLocationManagerDelegate,ObservableObject {
     private let locationManager = CLLocationManager()
     private var currentLocation: CLLocation?
     private var lastSentLocation: CLLocation?
-    private let stationaryDistanceThreshold: CLLocationDistance = 10  // 10 m
+    private let stationaryDistanceThreshold: CLLocationDistance = 50  // 10 m
 
     // NEW: track whether updates are currently active
     @Published  var isUpdatingLocation = false
@@ -44,6 +44,9 @@ class TDSLocationAPI: NSObject, CLLocationManagerDelegate,ObservableObject {
 
     
     func CombinedValue() -> Bool {
+        if TDSCarplayAccess.shared.DisableIsStationary == true {
+            return true
+        }
         if isUpdatingLocation == false {
             return false
         }
@@ -60,6 +63,9 @@ class TDSLocationAPI: NSObject, CLLocationManagerDelegate,ObservableObject {
         isStationary = false
         isUpdatingLocation = true
         locationManager.startUpdatingLocation()
+        if TDSCarplayAccess.shared.DisableIsStationary == true {
+            isStationary = true
+        }
     }
     @MainActor
     func stopUpdatingLocation() {
