@@ -23,15 +23,6 @@ I have an updated TestFlight Link - https://testflight.apple.com/join/6drWGVde P
 
 
 
-## Location Stationary bypass code
-
-Want to be able to use it on the go and not be required to be stopped.
-
-1. Press on "Enter Code"
-
-2. Type in the code "CarPlay"
-
-3. Now reload the app, eg: close from app switcher and open again, you should only have to do this once.
 
 Any issues please reach out. 
 
