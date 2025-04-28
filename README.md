@@ -11,15 +11,11 @@ TDS CarPlay is an app that allows you to view videos and show your screen on you
 
 ## Download 
 
-The App is now in the app store - https://apps.apple.com/app/tds-video/id6741498515 
+Test flight Beta link download link - [TDS CarPlay](https://testflight.apple.com/join/6drWGVde) 
 
 ## Links 
-Test flight Beta link  (outdated) download link - [TDS CarPlay](https://testflight.apple.com/join/1Z9HQgNw) 
-
-It appears there is a limit of 10,000 users. sorry we have reached that, i will work on getting it in the app store.
 
 Youtube Video tutorial - https://youtu.be/gI3Tj2KP290 
-I have an updated TestFlight Link - https://testflight.apple.com/join/6drWGVde Please use this link as needed, however if you download an don't like/ stop using please leave the test flight to allow someone else to join in your place 
 
 
 
@@ -28,8 +24,6 @@ Any issues please reach out.
 
 
 ## Wheres the code?
-Right now the code is not open for everyone to download, I don't want apple to patch my app out of the system, however i want to allow people to use it and make use of it, so i will be updating the testflight often
-
 
 I am pleased to say the code has now been added for you all to use, see bellow about use. 
 
