@@ -176,7 +176,7 @@ struct MainView: View {
     }
 
     func openGitHubRepo() {
-        openURL("https://github.com/thomasdye12/TDS-video/tree/main")
+        openURL("https://github.com/thomasdye12/TDS-Carplay")
     }
 
     func openURL(_ urlString: String) {
