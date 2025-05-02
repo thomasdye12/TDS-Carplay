@@ -12,6 +12,8 @@ TDS CarPlay is an app that allows you to view videos and show your screen on you
 ## Download 
 
 Test flight Beta link download link - [TDS CarPlay](https://testflight.apple.com/join/6drWGVde) 
+The beta is now full - i will leave the link here in case people leave it, 
+To stay up to date with info and when I come out with a new beta, subscribe to the news letter [news letter](https://news.thomasdye.net/)  
 
 ## Links 
 
