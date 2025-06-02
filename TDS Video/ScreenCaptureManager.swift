@@ -101,14 +101,18 @@ class ScreenCaptureManager: NSObject,ObservableObject {
                     TDSVideoShared.shared.CarPlayComp?(.init(type: .IOSAPP))
                     self.IncomingVideoDetected = true
                 }
-                DispatchQueue.main.async {
-                    for ImageView in self.ImageViews {
-                        let uiImage = UIImage(cgImage: cgImage, scale: 1, orientation: ImageView.imageorientation)
-                        ImageView.imageview.image = uiImage
+                if TDSVideoAPI.shared.showPayment == true {
+                    
+                } else {
+                    DispatchQueue.main.async {
+                        for ImageView in self.ImageViews {
+                            let uiImage = UIImage(cgImage: cgImage, scale: 1, orientation: ImageView.imageorientation)
+                            ImageView.imageview.image = uiImage
+                        }
                     }
-                }
-                if HTTPServer.shared.isRunning {
-                    HTTPServer.shared.send(image: cgImage)
+                    if HTTPServer.shared.isRunning {
+                        HTTPServer.shared.send(image: cgImage)
+                    }
                 }
             }
         }

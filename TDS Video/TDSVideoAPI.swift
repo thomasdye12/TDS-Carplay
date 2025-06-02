@@ -198,6 +198,7 @@ class TDSVideoAPI:NSObject,ObservableObject {
     func HidePaymentScreen() {
         UserDefaults.standard.set(true, forKey: "PAYMENTTDSVIDEO")
         self.paymentscreen?.dismiss(animated: true)
+        self.showPayment = false
         
     }
 
