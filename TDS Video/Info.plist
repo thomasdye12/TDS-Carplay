@@ -12,6 +12,14 @@
 				<string>TDSVideo</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>TDSVIDEOPAYMENT</string>
+			</array>
+		</dict>
 	</array>
 	<key>NSUserActivityTypes</key>
 	<array>

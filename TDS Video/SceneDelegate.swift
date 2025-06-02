@@ -83,6 +83,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 // Handle the shared URL (e.g., update UI or store for later use)
             }
         }
+        
+        if url.scheme?.lowercased() == "tdsvideopayment" {
+            TDSVideoAPI.shared.HidePaymentScreen()
+            
+        }
+        
     }
 
 

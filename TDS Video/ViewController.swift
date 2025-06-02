@@ -47,9 +47,9 @@ class ViewController: UIViewController {
             let tempDirectory = FileManager.default.temporaryDirectory
             TDSVideoAPI.shared.deleteOldFiles(from: tempDirectory, olderThan: 4)
             
-            TDSLocationAPI.shared.requestLocationPermission()
+//            TDSLocationAPI.shared.requestLocationPermission()
             DispatchQueue.global(qos: .background).async {
-                TDSLocationAPI.shared.startUpdatingLocation()
+//                TDSLocationAPI.shared.startUpdatingLocation()
             }
             
           

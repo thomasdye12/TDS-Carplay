@@ -66,20 +66,25 @@ class TDSVideoAPI:NSObject,ObservableObject {
     
     func DeviceBooted(VC:UIViewController) async {
          let uuid = BackgroundAuthID(DeviceUUID: UUID().uuidString)
+        self.showPayment = false
         // Increment call count
            callCount += 1
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 30) {
              self.sendDeviceUUID(UUID: uuid,callCount:self.callCount)
         }
-        if callCount > 10 {
+        if callCount > 4 {
             self.showPayment = true
         }
         
         
-        let HasSeenPaymentScreenBefore = UserDefaults.standard.string(forKey: "buymeACoffeePressedV2")
-        let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "unknown"
-        if HasSeenPaymentScreenBefore  == buildNumber{
+//        let HasSeenPaymentScreenBefore = UserDefaults.standard.string(forKey: "buymeACoffeePressedV2")
+//        let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "unknown"
+//        if HasSeenPaymentScreenBefore  == buildNumber{
+//            self.showPayment = false
+//        }
+        let PAYMENTTDSVIDEO = UserDefaults.standard.bool(forKey: "PAYMENTTDSVIDEO")
+        if PAYMENTTDSVIDEO == true  {
             self.showPayment = false
         }
         if showPayment {
@@ -187,6 +192,13 @@ class TDSVideoAPI:NSObject,ObservableObject {
         } catch {
             print("Error while deleting old files: \(error.localizedDescription)")
         }
+    }
+    
+    
+    func HidePaymentScreen() {
+        UserDefaults.standard.set(true, forKey: "PAYMENTTDSVIDEO")
+        self.paymentscreen?.dismiss(animated: true)
+        
     }
 
     
