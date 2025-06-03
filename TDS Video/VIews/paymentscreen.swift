@@ -117,7 +117,7 @@ struct SupportScreen: View {
                 // TODO: Replace with your actual YouTube channel URL
                 if let url = URL(string: "https://payments.thomasdye.net/CP/b82b9c80-b318-47fb-9b2e-b4857cffe42a/?deviceID=\(UIDevice.current.identifierForVendor?.uuidString ?? "SOMEIDNOTKNOW")") {
                     UIApplication.shared.open(url)
-                    print("Payment link link pressed")
+                    print("ONE TIME - Payment link link pressed")
                 }
             }) {
                 HStack {
