@@ -26,7 +26,7 @@ struct TDSDeviceURL: Codable {
 
 class TDSVideoAPI:NSObject,ObservableObject {
     static let shared = TDSVideoAPI()
-    private let serverURL = URL(string: "https://api.thomasdye.net/app/ThomasRandom/TDSVideo/ApppTrackingV2")!
+    private let serverURL = AppConfig.trackingURL
     private let pinnedPublicKeyHash = "dLd2Fq91ht5iLfGjD6gNvTt5p6otE41l9Bss5hicNoQ=" // Replace with actual hash
     // dLd2Fq91ht5iLfGjD6gNvTt5p6otE41l9Bss5hicNoQ=
     let motionActivityManager = CMMotionActivityManager()
@@ -160,7 +160,7 @@ class TDSVideoAPI:NSObject,ObservableObject {
     func sendEmail() {
         let subject = "TDS Video Support Request device UUID: \(UIDevice.current.identifierForVendor?.uuidString ?? "")"
           let body = ""
-          let email = "apple@thomasdye.net" // Replace with your email
+          let email = AppConfig.supportEmail
           let encodedSubject = subject.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
           let encodedBody = body.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
           
@@ -199,14 +199,62 @@ class TDSVideoAPI:NSObject,ObservableObject {
         UserDefaults.standard.set(true, forKey: "PAYMENTTDSVIDEO")
         self.paymentscreen?.dismiss(animated: true)
         self.showPayment = false
-        
+    }
+
+    /// Verify payment token with the server before unlocking the app.
+    /// Only calls HidePaymentScreen() if the server confirms the token is valid.
+    func verifyPaymentToken(_ token: String) {
+        let verifyURL = AppConfig.paymentVerifyURL
+
+        var request = URLRequest(url: verifyURL)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let deviceID = BackgroundAuthID(DeviceUUID: nil)
+        let body: [String: String] = ["token": token, "deviceID": deviceID]
+        request.httpBody = try? JSONEncoder().encode(body)
+
+        URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+            guard let httpResponse = response as? HTTPURLResponse,
+                  httpResponse.statusCode == 200 else {
+                return
+            }
+            DispatchQueue.main.async {
+                self?.HidePaymentScreen()
+            }
+        }.resume()
     }
 
     
 }
 
 extension TDSVideoAPI: URLSessionDelegate {
+    func urlSession(_ session: URLSession,
+                    didReceive challenge: URLAuthenticationChallenge,
+                    completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        guard challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust,
+              let serverTrust = challenge.protectionSpace.serverTrust else {
+            completionHandler(.cancelAuthenticationChallenge, nil)
+            return
+        }
 
+        // Extract the server's public key and compare its SHA-256 hash
+        if let serverCertificate = SecTrustCopyCertificateChain(serverTrust) as? [SecCertificate],
+           let certificate = serverCertificate.first,
+           let publicKey = SecCertificateCopyKey(certificate),
+           let publicKeyData = SecKeyCopyExternalRepresentation(publicKey, nil) as Data? {
+
+            let hash = publicKeyData.sha256().base64EncodedString()
+
+            if hash == pinnedPublicKeyHash {
+                completionHandler(.useCredential, URLCredential(trust: serverTrust))
+                return
+            }
+        }
+
+        // Pin mismatch — reject the connection
+        completionHandler(.cancelAuthenticationChallenge, nil)
+    }
 }
 
 extension Data {
@@ -299,12 +347,38 @@ public enum AspectRatio : Int, @unchecked Sendable, CaseIterable {
 }
 
 
-func BackgroundAuthID(DeviceUUID:String?) -> String {
-    if let id = UserDefaults.standard.string(forKey: "BackgroundAuthID")  {
+func BackgroundAuthID(DeviceUUID: String?) -> String {
+    let service = "net.thomasdye.TDS-Video"
+    let account = "BackgroundAuthID"
+
+    // Try reading from Keychain first
+    let query: [String: Any] = [
+        kSecClass as String: kSecClassGenericPassword,
+        kSecAttrService as String: service,
+        kSecAttrAccount as String: account,
+        kSecReturnData as String: true,
+        kSecMatchLimit as String: kSecMatchLimitOne
+    ]
+
+    var result: AnyObject?
+    let status = SecItemCopyMatching(query as CFDictionary, &result)
+
+    if status == errSecSuccess,
+       let data = result as? Data,
+       let id = String(data: data, encoding: .utf8) {
         return id
     }
-    let newID = (DeviceUUID ?? UUID().uuidString )
-    UserDefaults.standard.set(newID, forKey: "BackgroundAuthID")
+
+    // Not found — generate and store
+    let newID = DeviceUUID ?? UUID().uuidString
+    let addQuery: [String: Any] = [
+        kSecClass as String: kSecClassGenericPassword,
+        kSecAttrService as String: service,
+        kSecAttrAccount as String: account,
+        kSecValueData as String: newID.data(using: .utf8)!,
+        kSecAttrAccessible as String: kSecAttrAccessibleAfterFirstUnlock
+    ]
+    SecItemAdd(addQuery as CFDictionary, nil)
+
     return newID
-    
 }

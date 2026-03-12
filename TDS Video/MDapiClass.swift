@@ -156,16 +156,4 @@ class ErrorHandling:NSObject {
 
 
 
-class ManagmentURLS {
-    static let shared = ManagmentURLS()
-    func fetchOrders() -> URL {
-        return URL(string: "https://api.thomasdye.net/app/ThomasRandom/mcdonalds/backend/V1/Api/getOrders")!
-    }
-//     updload token mcdonalds/backend/V1/Api/ "uploadAccessToken"
-    
-    func UploadToken(_ token:String) -> URL {
-        return URL(string: "https://api.thomasdye.net/app/ThomasRandom/mcdonalds/backend/V1/Api/\(token)")!
-    }
-}
-
 

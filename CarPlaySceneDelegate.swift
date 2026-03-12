@@ -107,12 +107,14 @@ class CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate, CPM
             
         }
         
-        TDSVideoURlFromOutSideOFAppListener.shared.onUpdate = {url in
-            print(url)
-            if let url = URL(string: url) {
-                CustomWebViewController.shared.loadURL(url)
-                TDSVideoShared.shared.CarPlayComp?(.init(type: .web))
+        TDSVideoURlFromOutSideOFAppListener.shared.onUpdate = { urlString in
+            guard let url = URL(string: urlString),
+                  let scheme = url.scheme?.lowercased(),
+                  scheme == "http" || scheme == "https" else {
+                return
             }
+            CustomWebViewController.shared.loadURL(url)
+            TDSVideoShared.shared.CarPlayComp?(.init(type: .web))
         }
         
 
