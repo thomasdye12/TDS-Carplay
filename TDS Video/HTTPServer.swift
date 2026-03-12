@@ -16,14 +16,23 @@ import UIKit
 //    <button id="fitToggle">Toggle Fit/Fill</button>
 //</div>
 class HTTPServer {
-    
+
     static var shared = HTTPServer()
     var isRunning = false
-    
+
     let server = HttpServer()
-    
+    /// Random access token generated each time the server starts — must be included as ?token= query param.
+    private(set) var accessToken: String = ""
+
     init () {
-  
+
+    }
+
+    /// Validates the token query parameter in the request.
+    private func isAuthorized(_ request: HttpRequest) -> Bool {
+        // Allow /frame requests from the HTML page served on / (same origin)
+        let queryToken = request.queryParams.first(where: { $0.0 == "token" })?.1
+        return queryToken == accessToken
     }
     
     let html = """
@@ -140,12 +149,24 @@ class HTTPServer {
     
     
     func Start(){
-        server["/"] = { _ in
-            return HttpResponse.ok(.html(self.html))
+        // Generate a fresh random token each time the server starts
+        accessToken = UUID().uuidString
+
+        server["/"] = { [weak self] _ in
+            guard let self = self else { return HttpResponse.internalServerError }
+            // Inject the token into the HTML so the page can authenticate /frame requests
+            let authenticatedHTML = self.html.replacingOccurrences(
+                of: "fetch('/frame?cache=' + Date.now())",
+                with: "fetch('/frame?token=\(self.accessToken)&cache=' + Date.now())"
+            )
+            return HttpResponse.ok(.html(authenticatedHTML))
         }
 
-        
-        server["/frame"] = { request in
+        server["/frame"] = { [weak self] request in
+            guard let self = self else { return HttpResponse.internalServerError }
+            guard self.isAuthorized(request) else {
+                return HttpResponse.forbidden
+            }
             guard let image = self.currentFrame else {
                 return HttpResponse.notFound
             }
@@ -160,15 +181,16 @@ class HTTPServer {
             }
         }
 
-        
         server["/mjpeg"] = { [weak self] request in
+            guard let self = self else { return HttpResponse.internalServerError }
+            guard self.isAuthorized(request) else {
+                return HttpResponse.forbidden
+            }
             return HttpResponse.raw(200, "OK", [
                 "Content-Type": "multipart/x-mixed-replace; boundary=frame",
                 "Cache-Control": "no-cache",
                 "Connection": "close"
             ]) { writer in
-                guard let self = self else { return }
-
                 while self.isRunning {
                     if let image = self.currentFrame {
                         let uiImage = UIImage(cgImage: image)
@@ -186,22 +208,21 @@ class HTTPServer {
                         }
                     }
 
-                    Thread.sleep(forTimeInterval: 0.033) // ~30 FPS (adjust as needed)
+                    Thread.sleep(forTimeInterval: 0.033) // ~30 FPS
                 }
             }
         }
-        
-        
+
         do {
             isRunning = true
-            try server.start(8080, forceIPv4: true)
-            print("Server running at :8080")
+            try server.start(AppConfig.httpServerPort, forceIPv4: true)
+            print("Server running at :\(AppConfig.httpServerPort) (token: \(accessToken))")
             print(getAllIPAddresses())
         } catch {
             isRunning = false
             print("Server failed to start: \(error)")
         }
-        
+
     }
     
     func Stop(){

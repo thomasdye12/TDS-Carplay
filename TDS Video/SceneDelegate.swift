@@ -51,7 +51,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //               userDefaults?.addObserver(self, forKeyPath: "TDSSharedURL", options: .new, context: nil)
 
                if let sharedURLString = userDefaults?.string(forKey: "TDVideo-SharedURL"),
-                  let sharedURL = URL(string: sharedURLString) {
+                  let sharedURL = URL(string: sharedURLString),
+                  let scheme = sharedURL.scheme?.lowercased(),
+                  scheme == "http" || scheme == "https" {
                    CustomWebViewController.shared.initView()
                    CustomWebViewController.shared.loadURL(sharedURL)
                    TDSVideoShared.shared.CarPlayComp?(.init(type: .web, URL: sharedURL))
@@ -73,20 +75,30 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         print("App opened with URL: \(url.absoluteString)")
 
-        if url.scheme?.lowercased() == "tdsvideo" { // Ensure case matches
+        if url.scheme?.lowercased() == "tdsvideo" {
             if let components = URLComponents(url: url, resolvingAgainstBaseURL: true),
                let queryItems = components.queryItems,
                let sharedURLString = queryItems.first(where: { $0.name == "url" })?.value,
                let sharedURL = URL(string: sharedURLString.removingPercentEncoding ?? "") {
 
+                // Only allow http/https URLs to prevent loading file:// or javascript: schemes
+                guard let scheme = sharedURL.scheme?.lowercased(),
+                      scheme == "http" || scheme == "https" else {
+                    return
+                }
+
                 print("Received shared URL in app: \(sharedURL)")
-                // Handle the shared URL (e.g., update UI or store for later use)
+                CustomWebViewController.shared.loadURL(sharedURL)
+                TDSVideoShared.shared.CarPlayComp?(.init(type: .web, URL: sharedURL))
             }
         }
         
         if url.scheme?.lowercased() == "tdsvideopayment" {
-            TDSVideoAPI.shared.HidePaymentScreen()
-            
+            // Validate payment token from the payment server before unlocking
+            if let components = URLComponents(url: url, resolvingAgainstBaseURL: true),
+               let token = components.queryItems?.first(where: { $0.name == "token" })?.value {
+                TDSVideoAPI.shared.verifyPaymentToken(token)
+            }
         }
         
     }
