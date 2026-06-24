@@ -80,7 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // Handle changes
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        print(keyPath)
+        print(keyPath as Any)
         if keyPath == "TDVideo-SharedURL" {
             let userDefaults = UserDefaults(suiteName: "group.net.thomasdye.TDS-docs")
 

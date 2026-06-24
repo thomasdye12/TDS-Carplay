@@ -2,44 +2,32 @@
    Image: /System/Library/Frameworks/CarPlay.framework/CarPlay
  */
 
+#import <CarPlay/CarPlay.h>
+#import <Foundation/Foundation.h>
 
+@interface CPTemplate (Swizzling)
 
+- (NSString *)debugDescription;
+- (NSOperationQueue *)deferredOperationQueue;
+- (NSString *)description;
+- (unsigned long long)hash;
+- (NSUUID *)identifier;
+- (NSMutableArray *)internalLeadingBarButtons;
+- (NSMutableArray *)internalTrailingBarButtons;
+- (NSArray *)leadingNavigationBarButtons;
+- (Class)superclass;
+- (NSArray *)trailingNavigationBarButtons;
+- (id)userInfo;
 
++ (BOOL)supportsSecureCoding;
 
-
-@interface CPTemplate  (Swizzling)
-
-@property (readonly, copy) NSString *debugDescription;
-@property (nonatomic, retain) NSOperationQueue *deferredOperationQueue;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) NSUUID *identifier;
-@property (nonatomic, retain) NSMutableArray *internalLeadingBarButtons;
-@property (nonatomic, retain) NSMutableArray *internalTrailingBarButtons;
-@property (nonatomic, retain) NSArray *leadingNavigationBarButtons;
-@property (readonly) Class superclass;
-//@property (nonatomic) <CPTemplateDelegate> *templateDelegate;
-//@property (nonatomic, retain) <CPBaseTemplateProviding> *templateProvider;
-@property (nonatomic, retain) NSArray *trailingNavigationBarButtons;
-@property (nonatomic, retain) id userInfo;
-
-+ (bool)supportsSecureCoding;
-
-
-- (bool)barButton:(id)arg1 setImage:(id)arg2;
-- (bool)barButton:(id)arg1 setTitle:(id)arg2;
-- (bool)control:(id)arg1 setEnabled:(bool)arg2;
-- (void)dealloc;
-- (id)deferredOperationQueue;
-- (id)description;
+- (BOOL)barButton:(id)arg1 setImage:(id)arg2;
+- (BOOL)barButton:(id)arg1 setTitle:(id)arg2;
+- (BOOL)control:(id)arg1 setEnabled:(BOOL)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (void)handleActionForControlIdentifier:(id)arg1;
-- (id)identifier;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)internalLeadingBarButtons;
-- (id)internalTrailingBarButtons;
-- (id)leadingNavigationBarButtons;
 - (void)setDeferredOperationQueue:(id)arg1;
 - (void)setInternalLeadingBarButtons:(id)arg1;
 - (void)setInternalTrailingBarButtons:(id)arg1;
@@ -49,12 +37,10 @@
 - (void)setTrailingNavigationBarButtons:(id)arg1;
 - (void)setUserInfo:(id)arg1;
 - (id)templateDelegate;
-- (void)templateDidAppear:(id)arg1 animated:(bool)arg2;
-- (void)templateDidDisappear:(id)arg1 animated:(bool)arg2;
+- (void)templateDidAppear:(id)arg1 animated:(BOOL)arg2;
+- (void)templateDidDisappear:(id)arg1 animated:(BOOL)arg2;
 - (id)templateProvider;
-- (void)templateWillAppear:(id)arg1 animated:(bool)arg2;
-- (void)templateWillDisappear:(id)arg1 animated:(bool)arg2;
-- (id)trailingNavigationBarButtons;
-- (id)userInfo;
+- (void)templateWillAppear:(id)arg1 animated:(BOOL)arg2;
+- (void)templateWillDisappear:(id)arg1 animated:(BOOL)arg2;
 
 @end

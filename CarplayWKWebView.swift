@@ -30,9 +30,7 @@ class CustomWebViewController: CarPlayViewControllerProtocol, WKNavigationDelega
         // Initialize and configure the web view
         let config = WKWebViewConfiguration()
         config.allowsInlineMediaPlayback = true
-        if #available(iOS 10.0, *) {
-            config.mediaTypesRequiringUserActionForPlayback = []
-               }
+        config.mediaTypesRequiringUserActionForPlayback = []
         config.allowsPictureInPictureMediaPlayback = true
       
         let script = """

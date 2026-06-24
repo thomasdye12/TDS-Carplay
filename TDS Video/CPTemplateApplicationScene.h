@@ -15,11 +15,10 @@
 #import <objc/runtime.h>
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface CPTemplateApplicationScene (Swizzle)
-
-// Public method to check if the car window should be created
 - (BOOL)_shouldCreateCarWindow;
-
 @end
 
 @interface CPInterfaceController (Swizzle)
@@ -31,17 +30,19 @@
 - (void)_pushTemplate:(CPTemplate *_Nullable)template
     presentationStyle:(NSInteger)presentationStyle
              animated:(BOOL)animated
-           completion:(void (^)(BOOL success, NSError *error))completion;
+           completion:(void (^_Nullable)(BOOL success, NSError *_Nullable error))completion;
 
 - (void)_pushMapTemplate:(CPTemplate *_Nullable)template
     presentationStyle:(NSInteger)presentationStyle
              animated:(BOOL)animated
-           completion:(void (^)(BOOL success, NSError *error))completion;
+           completion:(void (^_Nullable)(BOOL success, NSError *_Nullable error))completion;
 - (void)_pushListTemplate:(CPTemplate *_Nullable)template
     presentationStyle:(NSInteger)presentationStyle
              animated:(BOOL)animated
-           completion:(void (^)(BOOL success, NSError *error))completion;
+           completion:(void (^_Nullable)(BOOL success, NSError *_Nullable error))completion;
 @end
+
+NS_ASSUME_NONNULL_END
 
 
 #endif /* CPTemplateApplicationScene_h */

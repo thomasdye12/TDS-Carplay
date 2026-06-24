@@ -15,7 +15,7 @@ public final class VideoDecoder {
 
         #if canImport(UIKit)
         willEnterForegroundTask = Task { [weak self] in
-            for await _ in await NotificationCenter.default.notifications(
+            for await _ in NotificationCenter.default.notifications(
                 named: UIApplication.willEnterForegroundNotification
             ) {
                 self?.invalidate()

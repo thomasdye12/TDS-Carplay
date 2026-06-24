@@ -15,7 +15,7 @@ struct ScreenCaptureManagerImageViews {
     
 }
 
-class ScreenCaptureManager: NSObject,ObservableObject {
+class ScreenCaptureManager: NSObject, ObservableObject, @unchecked Sendable {
     
     private var listener: NWListener?
     private var connection: NWConnection?
@@ -159,12 +159,12 @@ class ScreenCaptureManager: NSObject,ObservableObject {
     }
     
     func UpdateOrientation(_ orientation: ScreenOrientation){
-        for (index,imageView) in self.ImageViews.enumerated() {
+        for index in self.ImageViews.indices {
             self.ImageViews[index].imageorientation = .init(rawValue: orientation.rawValue) ?? .left
         }
     }
     func UpdateAspectRatio(_ orientation: AspectRatio){
-        for (index,imageView) in self.ImageViews.enumerated() {
+        for index in self.ImageViews.indices {
             self.ImageViews[index].imageview.contentMode = .init(rawValue: orientation.rawValue) ?? .scaleAspectFill
         }
     }
@@ -194,8 +194,7 @@ class ScreenCaptureManager: NSObject,ObservableObject {
             self.connection = newConnection
             
             // Observe the connection state so we can detect failures, closures, etc.
-            newConnection.stateUpdateHandler = { [weak self] newState in
-                guard let self = self else { return }
+            newConnection.stateUpdateHandler = { newState in
                 switch newState {
                 case .ready:
                     print("Server-side: Connection is ready: \(newConnection.endpoint)")
@@ -282,13 +281,11 @@ extension ScreenCaptureManager: RPBroadcastActivityViewControllerDelegate {
             guard let broadcastController = broadcastController else { return }
             
             // Now you can start the actual broadcast
-            broadcastController.startBroadcast { [weak self] error in
+            broadcastController.startBroadcast { error in
                 if let error = error {
                     print("Could not start broadcast: \(error)")
                 } else {
                     print("Broadcast started successfully!")
-                    
-                 
                 }
             }
         }

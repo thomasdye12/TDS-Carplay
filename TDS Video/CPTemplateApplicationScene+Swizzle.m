@@ -8,7 +8,10 @@
 #import "CPTemplateApplicationScene.h"
 #import <objc/runtime.h>
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wincomplete-implementation"
 @implementation CPTemplateApplicationScene (Swizzle)
+#pragma clang diagnostic pop
 
 + (void)load {
     static dispatch_once_t onceToken;
@@ -56,11 +59,15 @@
 @implementation CPInterfaceController (Bypass)
 
 + (void)load {
-    Method original = class_getInstanceMethod(self, @selector(clientPushedIllegalTemplateOfClass:));
-    Method swizzled = class_getInstanceMethod(self, @selector(bypass_clientPushedIllegalTemplateOfClass:));
+    SEL originalSel = NSSelectorFromString(@"clientPushedIllegalTemplateOfClass:");
+    SEL swizzledSel = @selector(bypass_clientPushedIllegalTemplateOfClass:);
 
-    method_exchangeImplementations(original, swizzled);
+    Method originalMethod = class_getInstanceMethod(self, originalSel);
+    Method swizzledMethod = class_getInstanceMethod(self, swizzledSel);
 
+    if (originalMethod && swizzledMethod) {
+        method_exchangeImplementations(originalMethod, swizzledMethod);
+    }
 }
 
 - (void)bypass_clientPushedIllegalTemplateOfClass:(Class)cls {

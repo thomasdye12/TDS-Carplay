@@ -144,7 +144,7 @@ class CustomVideoPlayerViewController: UIViewController {
         nowPlayingInfo[MPMediaItemPropertyArtist] = ""
 
         // Duration
-        let durationInSeconds = CMTimeGetSeconds(currentItem.asset.duration)
+        let durationInSeconds = CMTimeGetSeconds(currentItem.duration)
         nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = durationInSeconds
 
         // Current playback time & rate
@@ -163,7 +163,7 @@ class CustomVideoPlayerViewController: UIViewController {
         let nowPlayingInfoCenter = MPNowPlayingInfoCenter.default()
         var nowPlayingInfo = nowPlayingInfoCenter.nowPlayingInfo ?? [String: Any]()
 
-        if let player =  TDSVideoShared.shared.VideoPlayerForFile, let currentItem = player.currentItem {
+        if let player = TDSVideoShared.shared.VideoPlayerForFile, player.currentItem != nil {
             nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = CMTimeGetSeconds(player.currentTime())
             nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = player.rate
         }
@@ -172,20 +172,20 @@ class CustomVideoPlayerViewController: UIViewController {
     }
 
     func skipForward() {
-        guard let player =  TDSVideoShared.shared.VideoPlayerForFile , let currentItem = player.currentItem else { return }
+        guard let player = TDSVideoShared.shared.VideoPlayerForFile, let currentItem = player.currentItem else { return }
         let currentTime = CMTimeGetSeconds(player.currentTime())
         let newTime = currentTime + 15.0
         if newTime < CMTimeGetSeconds(currentItem.duration) {
-            let time = CMTimeMakeWithSeconds(newTime, preferredTimescale: currentItem.asset.duration.timescale)
+            let time = CMTimeMakeWithSeconds(newTime, preferredTimescale: currentItem.duration.timescale)
             player.seek(to: time)
         }
     }
 
     func skipBackward() {
-        guard let player =  TDSVideoShared.shared.VideoPlayerForFile  else { return }
+        guard let player = TDSVideoShared.shared.VideoPlayerForFile else { return }
         let currentTime = CMTimeGetSeconds(player.currentTime())
         let newTime = max(currentTime - 15.0, 0)
-        let time = CMTimeMakeWithSeconds(newTime, preferredTimescale: player.currentItem?.asset.duration.timescale ?? 1)
+        let time = CMTimeMakeWithSeconds(newTime, preferredTimescale: player.currentItem?.duration.timescale ?? 1)
         player.seek(to: time)
     }
     
