@@ -120,7 +120,7 @@ struct MainView: View {
                                 .foregroundColor(.purple)
                         }
 
-                        Text("© 2025 Thomas Dye. All rights reserved.")
+                        Text("© 2025 CarPlay Stream Pro. All rights reserved.")
                             .font(.caption2)
                             .foregroundColor(.secondary)
                             .padding(.top, 6)
@@ -130,7 +130,7 @@ struct MainView: View {
                     EmptyView()
                 }
             }
-            .navigationTitle("TDS CarPlay Tools")
+            .navigationTitle("CarPlay Stream Pro")
             // keep authStatus up to date when app comes back to foreground
 //                   .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
 //                       authStatus = CLLocationManager.authorizationStatus()

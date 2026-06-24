@@ -194,7 +194,7 @@ struct SupportScreen: View {
 //            }
             
             // Footer
-            Text("Created by Thomas Dye. © 2025 Thomas Dye. All rights reserved.")
+            Text("Created by Thomas Dye. © 2025 CarPlay Stream Pro. All rights reserved.")
                 .font(.caption2)
                 .foregroundColor(.secondary)
         }

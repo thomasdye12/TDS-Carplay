@@ -158,7 +158,7 @@ class TDSVideoAPI:NSObject,ObservableObject {
         self.paymentscreen?.dismiss(animated: true)
     }
     func sendEmail() {
-        let subject = "TDS Video Support Request device UUID: \(UIDevice.current.identifierForVendor?.uuidString ?? "")"
+        let subject = "CarPlay Stream Pro Support Request device UUID: \(UIDevice.current.identifierForVendor?.uuidString ?? "")"
           let body = ""
           let email = "apple@thomasdye.net" // Replace with your email
           let encodedSubject = subject.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""

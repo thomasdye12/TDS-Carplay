@@ -9,7 +9,7 @@
 //                                           BundleID: "net.thomasdye.TDS-Video",AccountType: "TDS",
 //                                             TokenSuiteName: "group.net.thomasdye.Auth_Creds", RequireFaceID: false,
 //                                           LoginViewconfig: LoginViewConfigops(
-//                                            Title: "TDS CarPlay Video",
+//                                            Title: "CarPlay Stream Pro",
 //                                            Username: false, Password: false,
 //                                            Canlogin: false, signinwithApple: false,SignUP: false,
 //                                            Nologin_message: "Server error",LoginButtonColour: UIColor(red: 0.2, green: 0.7, blue: 1, alpha: 1),

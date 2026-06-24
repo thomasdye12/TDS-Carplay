@@ -18,7 +18,7 @@ struct TDSVideoMainScreen: View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
-                    Text("Welcome to TDS Video!")
+                    Text("Welcome to CarPlay Stream Pro!")
                         .font(.largeTitle)
                         .bold()
 
@@ -50,7 +50,7 @@ Anyone on the same Wi-Fi can view your screen by entering one of the local IP ad
                 }
                 .padding()
             }
-            .navigationBarTitle("TDS Video", displayMode: .inline)
+            .navigationBarTitle("CarPlay Stream Pro", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Enter Code") {

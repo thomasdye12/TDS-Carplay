@@ -84,7 +84,7 @@ struct  CarplayComClass {
       }
     
     func loadSharedURL() -> URL? {
-        let userDefaults = UserDefaults(suiteName: "group.net.thomasdye.TDS-docs")
+        let userDefaults = UserDefaults(suiteName: "group.com.g3545.tds-carplay")
         if let urlString = userDefaults?.string(forKey: "TDSSharedURL") {
             return URL(string: urlString)
         }
@@ -94,7 +94,7 @@ struct  CarplayComClass {
     // TDSSharedVideo
 
     func loadSharedURLVideo() -> String? {
-        let userDefaults = UserDefaults(suiteName: "group.net.thomasdye.TDS-docs")
+        let userDefaults = UserDefaults(suiteName: "group.com.g3545.tds-carplay")
         if let urlString = userDefaults?.string(forKey: "TDSSharedVideo") {
             return urlString
         }

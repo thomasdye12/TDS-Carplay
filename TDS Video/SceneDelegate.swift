@@ -45,7 +45,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
            // Scene became active
            print("The scene is active.")
            ScreenCaptureManager.shared.InForeground()
-           let userDefaults = UserDefaults(suiteName: "group.net.thomasdye.TDS-docs")
+           let userDefaults = UserDefaults(suiteName: "group.com.g3545.tds-carplay")
 
                // Observe changes to "TDSSharedURL"
 //               userDefaults?.addObserver(self, forKeyPath: "TDSSharedURL", options: .new, context: nil)

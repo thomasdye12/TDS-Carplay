@@ -19,11 +19,11 @@ struct SaveToSharedDefaultsIntent: AppIntent {
 
     func perform() async throws -> some IntentResult {
         // Replace with your actual App Group ID
-        let sharedDefaults = UserDefaults(suiteName: "group.net.thomasdye.TDS-docs")
+        let sharedDefaults = UserDefaults(suiteName: "group.com.g3545.tds-carplay")
         sharedDefaults?.set(textToSave, forKey: "TDVideo-SharedURL")
         
         // Post cross-process notification
-               let notificationName = "group.net.thomasdye.TDS-docs.TDVideo-SharedURL"
+               let notificationName = "group.com.g3545.tds-carplay.TDVideo-SharedURL"
                CFNotificationCenterPostNotification(
                    CFNotificationCenterGetDarwinNotifyCenter(),
                    CFNotificationName(notificationName as CFString),

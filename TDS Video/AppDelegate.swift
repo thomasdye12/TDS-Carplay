@@ -82,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         print(keyPath as Any)
         if keyPath == "TDVideo-SharedURL" {
-            let userDefaults = UserDefaults(suiteName: "group.net.thomasdye.TDS-docs")
+            let userDefaults = UserDefaults(suiteName: "group.com.g3545.tds-carplay")
 
             if let sharedURLString = userDefaults?.string(forKey: "TDVideo-SharedURL"),
                let sharedURL = URL(string: sharedURLString) {

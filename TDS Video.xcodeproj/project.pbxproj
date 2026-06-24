@@ -659,7 +659,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = K3S7UENN8E;
+				DEVELOPMENT_TEAM = F6947UZD33;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UploadVideo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = UploadVideo;
@@ -671,7 +671,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.thomasdye.TDS-Video3.UploadVideo";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.g3545.tds-carplay.UploadVideo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -687,7 +687,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = K3S7UENN8E;
+				DEVELOPMENT_TEAM = F6947UZD33;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UploadVideo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = UploadVideo;
@@ -699,7 +699,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.thomasdye.TDS-Video3.UploadVideo";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.g3545.tds-carplay.UploadVideo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -714,7 +714,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = K3S7UENN8E;
+				DEVELOPMENT_TEAM = F6947UZD33;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ScreenRecSetupUI/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ScreenRecSetupUI;
@@ -726,7 +726,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.thomasdye.TDS-Video3.ScreenRecSetupUI";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.g3545.tds-carplay.ScreenRecSetupUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -741,7 +741,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = K3S7UENN8E;
+				DEVELOPMENT_TEAM = F6947UZD33;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ScreenRecSetupUI/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ScreenRecSetupUI;
@@ -753,7 +753,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.thomasdye.TDS-Video3.ScreenRecSetupUI";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.g3545.tds-carplay.ScreenRecSetupUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -769,7 +769,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = K3S7UENN8E;
+				DEVELOPMENT_TEAM = F6947UZD33;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ScreenRec/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "TDS Video Stream";
@@ -781,7 +781,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.thomasdye.TDS-Video3.ScreenRec";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.g3545.tds-carplay.ScreenRec";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -797,7 +797,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = K3S7UENN8E;
+				DEVELOPMENT_TEAM = F6947UZD33;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ScreenRec/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "TDS Video Stream";
@@ -809,7 +809,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.thomasdye.TDS-Video3.ScreenRec";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.g3545.tds-carplay.ScreenRec";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -828,10 +828,10 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = K3S7UENN8E;
+				DEVELOPMENT_TEAM = F6947UZD33;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TDS Video/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "TDS Video";
+				INFOPLIST_KEY_CFBundleDisplayName = "CarPlay Stream Pro";
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = test;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = t3wrt;
@@ -848,7 +848,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.thomasdye.TDS-Video3";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.g3545.tds-carplay";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -873,10 +873,10 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = K3S7UENN8E;
+				DEVELOPMENT_TEAM = F6947UZD33;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TDS Video/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "TDS Video";
+				INFOPLIST_KEY_CFBundleDisplayName = "CarPlay Stream Pro";
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = test;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = t3wrt;
@@ -893,7 +893,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.thomasdye.TDS-Video3";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.g3545.tds-carplay";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1036,7 +1036,7 @@
 				CODE_SIGN_ENTITLEMENTS = CarplayintentUI/CarplayintentUI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = K3S7UENN8E;
+				DEVELOPMENT_TEAM = F6947UZD33;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CarplayintentUI/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CarplayintentUI;
@@ -1048,7 +1048,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.thomasdye.TDS-Video3.CarplayintentUI";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.g3545.tds-carplay.CarplayintentUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1063,7 +1063,7 @@
 				CODE_SIGN_ENTITLEMENTS = CarplayintentUI/CarplayintentUI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = K3S7UENN8E;
+				DEVELOPMENT_TEAM = F6947UZD33;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CarplayintentUI/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CarplayintentUI;
@@ -1075,7 +1075,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.thomasdye.TDS-Video3.CarplayintentUI";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.g3545.tds-carplay.CarplayintentUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1089,7 +1089,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = K3S7UENN8E;
+				DEVELOPMENT_TEAM = F6947UZD33;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Carplayintent/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Carplayintent;
@@ -1101,7 +1101,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.thomasdye.TDS-Video3.Carplayintent";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.g3545.tds-carplay.Carplayintent";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1115,7 +1115,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = K3S7UENN8E;
+				DEVELOPMENT_TEAM = F6947UZD33;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Carplayintent/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Carplayintent;
@@ -1127,7 +1127,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.thomasdye.TDS-Video3.Carplayintent";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.g3545.tds-carplay.Carplayintent";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;

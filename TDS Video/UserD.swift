@@ -20,8 +20,8 @@ import UIKit
 class TDSVideoURlFromOutSideOFAppListener {
     static let shared = TDSVideoURlFromOutSideOFAppListener()
 
-    private  let notificationName = "group.net.thomasdye.TDS-docs.TDVideo-SharedURL"
-    private  let sharedDefaults = UserDefaults(suiteName: "group.net.thomasdye.TDS-docs")
+    private  let notificationName = "group.com.g3545.tds-carplay.TDVideo-SharedURL"
+    private  let sharedDefaults = UserDefaults(suiteName: "group.com.g3545.tds-carplay")
 
     var onUpdate: ((String) -> Void)?
 

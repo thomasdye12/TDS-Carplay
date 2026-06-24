@@ -49,11 +49,11 @@ class ShareViewController: SLComposeServiceViewController {
     }
     
     private func saveURL(url: URL) {
-        let sharedDefaults = UserDefaults(suiteName: "group.net.thomasdye.TDS-docs")
+        let sharedDefaults = UserDefaults(suiteName: "group.com.g3545.tds-carplay")
         sharedDefaults?.set(url.absoluteString, forKey: "TDVideo-SharedURL")
         
         // Post cross-process notification
-               let notificationName = "group.net.thomasdye.TDS-docs.TDVideo-SharedURL"
+               let notificationName = "group.com.g3545.tds-carplay.TDVideo-SharedURL"
                CFNotificationCenterPostNotification(
                    CFNotificationCenterGetDarwinNotifyCenter(),
                    CFNotificationName(notificationName as CFString),

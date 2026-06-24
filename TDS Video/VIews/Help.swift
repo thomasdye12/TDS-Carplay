@@ -20,12 +20,12 @@ struct Help: View {
 2. Start screen recording using the app extension:
    - Open Control Centre.
    - Long-press the screen recording button.
-   - Select **TDS Video** from the dropdown.
+   - Select **CarPlay Stream Pro** from the dropdown.
 3. This screen recording will begin streaming.
 4. Open the client app to view the stream.
 """)
 
-                    Text("❗️ If the TDS Video extension doesn't appear, the system may not have updated the list of available apps. Try waiting a few moments or restarting your device.")
+                    Text("❗️ If the CarPlay Stream Pro extension doesn't appear, the system may not have updated the list of available apps. Try waiting a few moments or restarting your device.")
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }

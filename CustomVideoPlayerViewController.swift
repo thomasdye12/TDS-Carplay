@@ -140,7 +140,7 @@ class CustomVideoPlayerViewController: UIViewController {
         var nowPlayingInfo = [String: Any]()
 
         // Set title & artist (shows up in Control Center)
-        nowPlayingInfo[MPMediaItemPropertyTitle] = "TDS Video In Car Player"
+        nowPlayingInfo[MPMediaItemPropertyTitle] = "CarPlay Stream Pro In Car Player"
         nowPlayingInfo[MPMediaItemPropertyArtist] = ""
 
         // Duration
