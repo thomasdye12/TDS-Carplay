@@ -13,10 +13,11 @@ import MediaPlayer
 class CustomVideoPlayerViewController: UIViewController {
 //    var player: AVPlayer?
     var playerLayer: AVPlayerLayer?
+    private var remoteCommandTargets: [(command: MPRemoteCommand, target: Any)] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         view.backgroundColor = .black
 
         setupRemoteCommandCenter()
@@ -30,11 +31,11 @@ class CustomVideoPlayerViewController: UIViewController {
         playerLayer.frame = view.bounds
         playerLayer.videoGravity = .resizeAspect
         view.layer.insertSublayer(playerLayer, at: 0)
-        
+
         // Set up Now Playing Info
         setupNowPlayingInfo()
     }
-    
+
     func setupPlayer(player: AVPlayer) {
         TDSVideoShared.shared.VideoPlayerForFile  = player
         playerLayer = AVPlayerLayer(player:  TDSVideoShared.shared.VideoPlayerForFile )
@@ -43,19 +44,19 @@ class CustomVideoPlayerViewController: UIViewController {
         playerLayer.frame = view.bounds
         playerLayer.videoGravity = .resize
         view.layer.insertSublayer(playerLayer, at: 0)
-        
+
         // Set up Now Playing Info
         setupNowPlayingInfo()
     }
-    
+
     func setupPlayerlayer(playerLayer: AVPlayerLayer) {
-        
+
         self.playerLayer = playerLayer
 
         playerLayer.frame = view.bounds
         playerLayer.videoGravity = .resize
         view.layer.insertSublayer(playerLayer, at: 0)
-        
+
         // Set up Now Playing Info
         setupNowPlayingInfo()
 //        setupRemoteTransportControls()
@@ -63,6 +64,7 @@ class CustomVideoPlayerViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        setupRemoteCommandCenter()
         TDSVideoShared.shared.VideoPlayerForFile?.play()
         updateNowPlayingInfo()
     }
@@ -70,12 +72,21 @@ class CustomVideoPlayerViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         TDSVideoShared.shared.VideoPlayerForFile?.pause()
+        tearDownRemoteCommandCenter()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        playerLayer?.frame = view.bounds
     }
 
     func setupRemoteCommandCenter() {
+        tearDownRemoteCommandCenter()
+
         let commandCenter = MPRemoteCommandCenter.shared()
 
-        commandCenter.playCommand.addTarget { [unowned self] event in
+        let playTarget = commandCenter.playCommand.addTarget { [weak self] event in
+            guard let self else { return .commandFailed }
             if  TDSVideoShared.shared.VideoPlayerForFile?.rate == 0.0 {
                 TDSVideoShared.shared.VideoPlayerForFile?.play()
                 self.updateNowPlayingInfo()
@@ -83,8 +94,10 @@ class CustomVideoPlayerViewController: UIViewController {
             }
             return .commandFailed
         }
+        remoteCommandTargets.append((commandCenter.playCommand, playTarget))
 
-        commandCenter.pauseCommand.addTarget { [unowned self] event in
+        let pauseTarget = commandCenter.pauseCommand.addTarget { [weak self] event in
+            guard let self else { return .commandFailed }
             if  TDSVideoShared.shared.VideoPlayerForFile?.rate != 0.0 {
                 TDSVideoShared.shared.VideoPlayerForFile?.pause()
                 self.updateNowPlayingInfo()
@@ -92,8 +105,14 @@ class CustomVideoPlayerViewController: UIViewController {
             }
             return .commandFailed
         }
+        remoteCommandTargets.append((commandCenter.pauseCommand, pauseTarget))
 
-        commandCenter.togglePlayPauseCommand.addTarget { [unowned self] event in
+        let toggleTarget = commandCenter.togglePlayPauseCommand.addTarget { [weak self] event in
+            guard
+                let self,
+                TDSVideoShared.shared.VideoPlayerForFile != nil
+            else { return .commandFailed }
+
             if  TDSVideoShared.shared.VideoPlayerForFile?.rate == 0.0 {
                 TDSVideoShared.shared.VideoPlayerForFile?.play()
             } else {
@@ -102,24 +121,37 @@ class CustomVideoPlayerViewController: UIViewController {
             self.updateNowPlayingInfo()
             return .success
         }
+        remoteCommandTargets.append((commandCenter.togglePlayPauseCommand, toggleTarget))
 
-        commandCenter.skipForwardCommand.addTarget { [unowned self] event in
+        let skipForwardTarget = commandCenter.skipForwardCommand.addTarget { [weak self] event in
+            guard
+                let self,
+                TDSVideoShared.shared.VideoPlayerForFile != nil
+            else { return .noSuchContent }
+
             self.skipForward()
             self.updateNowPlayingInfo()
             return .success
         }
+        remoteCommandTargets.append((commandCenter.skipForwardCommand, skipForwardTarget))
 
-        commandCenter.skipBackwardCommand.addTarget { [unowned self] event in
+        let skipBackwardTarget = commandCenter.skipBackwardCommand.addTarget { [weak self] event in
+            guard
+                let self,
+                TDSVideoShared.shared.VideoPlayerForFile != nil
+            else { return .noSuchContent }
+
             self.skipBackward()
             self.updateNowPlayingInfo()
             return .success
         }
+        remoteCommandTargets.append((commandCenter.skipBackwardCommand, skipBackwardTarget))
 
         commandCenter.skipForwardCommand.preferredIntervals = [15] // Skip forward 15 seconds
         commandCenter.skipBackwardCommand.preferredIntervals = [15] // Skip backward 15 seconds
-        
+
         commandCenter.changePlaybackPositionCommand.isEnabled = true
-        commandCenter.changePlaybackPositionCommand.addTarget { [weak self] event in
+        let changePositionTarget = commandCenter.changePlaybackPositionCommand.addTarget { [weak self] event in
             guard
                 let self = self,
                 let player =  TDSVideoShared.shared.VideoPlayerForFile,
@@ -132,6 +164,14 @@ class CustomVideoPlayerViewController: UIViewController {
             }
             return .success
         }
+        remoteCommandTargets.append((commandCenter.changePlaybackPositionCommand, changePositionTarget))
+    }
+
+    private func tearDownRemoteCommandCenter() {
+        remoteCommandTargets.forEach { registration in
+            registration.command.removeTarget(registration.target)
+        }
+        remoteCommandTargets.removeAll()
     }
 
     func setupNowPlayingInfo() {
@@ -155,8 +195,8 @@ class CustomVideoPlayerViewController: UIViewController {
 
         MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
     }
-    
-    
+
+
 
 
     func updateNowPlayingInfo() {
@@ -188,7 +228,8 @@ class CustomVideoPlayerViewController: UIViewController {
         let time = CMTimeMakeWithSeconds(newTime, preferredTimescale: player.currentItem?.asset.duration.timescale ?? 1)
         player.seek(to: time)
     }
-    
 
-    
+    deinit {
+        tearDownRemoteCommandCenter()
+    }
 }

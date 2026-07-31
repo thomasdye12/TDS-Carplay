@@ -16,8 +16,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        
+
         guard let _ = (scene as? UIWindowScene) else { return }
+        print("WINDOW SCENE \(scene)")
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -28,7 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
 
-    
+
     func sceneDidEnterBackground(_ scene: UIScene) {
            // Scene entered the background
            print("The scene has entered the background.")
@@ -52,11 +53,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
                if let sharedURLString = userDefaults?.string(forKey: "TDVideo-SharedURL"),
                   let sharedURL = URL(string: sharedURLString) {
-                   CustomWebViewController.shared.initView()
-                   CustomWebViewController.shared.loadURL(sharedURL)
-                   TDSVideoShared.shared.CarPlayComp?(.init(type: .web, URL: sharedURL))
-                 
-               
+                   handleIncomingSharedURL(sharedURL)
+
+
 
                    // Handle immediately if already saved
                    userDefaults?.removeObject(forKey: "TDVideo-SharedURL")
@@ -80,18 +79,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                let sharedURL = URL(string: sharedURLString.removingPercentEncoding ?? "") {
 
                 print("Received shared URL in app: \(sharedURL)")
-                // Handle the shared URL (e.g., update UI or store for later use)
+                handleIncomingSharedURL(sharedURL)
             }
         }
-        
+
         if url.scheme?.lowercased() == "tdsvideopayment" {
             TDSVideoAPI.shared.HidePaymentScreen()
-            
+
         }
-        
+
+    }
+
+    private func handleIncomingSharedURL(_ url: URL) {
+        if url.isFileURL {
+            TDSVideoShared.shared.CarPlayComp?(.init(type: .video, URL: url))
+            return
+        }
+
+        CustomWebViewController.shared.loadURL(url)
+        TDSVideoShared.shared.CarPlayComp?(.init(type: .web, URL: url))
     }
 
 
 
 }
-

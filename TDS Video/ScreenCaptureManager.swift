@@ -23,6 +23,7 @@ class ScreenCaptureManager: NSObject,ObservableObject {
     var IncomingVideoDetected: Bool = false
     var CarPlaysideofcarchange: ((SingleEdgeOffset) -> Void)?
 //    var IncomingVideoDetectedComp: (() -> Void)?
+    
   
     static let shared = ScreenCaptureManager()
     var ImageViews: [ScreenCaptureManagerImageViews] = []

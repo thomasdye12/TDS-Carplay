@@ -9,29 +9,32 @@ import UIKit
 import Social
 import MobileCoreServices
 import AVFoundation
+import UniformTypeIdentifiers
 
 class ShareViewController: SLComposeServiceViewController {
-    
+
     override func isContentValid() -> Bool {
         return true
     }
-    
+
     override func didSelectPost() {
         guard let item = extensionContext?.inputItems.first as? NSExtensionItem,
               let attachments = item.attachments else {
             return
         }
-        
+
         for attachment in attachments {
             print(attachment)
             if attachment.hasItemConformingToTypeIdentifier(UTType.url.identifier) {
                 handleURL(attachment: attachment)
+            } else if attachment.hasItemConformingToTypeIdentifier(UTType.plainText.identifier) {
+                handleText(attachment: attachment)
             } else if attachment.hasItemConformingToTypeIdentifier(UTType.movie.identifier) {
                 handleVideo(attachment: attachment)
             }
         }
     }
-    
+
     private func handleURL(attachment: NSItemProvider) {
         attachment.loadItem(forTypeIdentifier: UTType.url.identifier as String, options: nil) { (item, error) in
             if let url = item as? URL {
@@ -39,7 +42,18 @@ class ShareViewController: SLComposeServiceViewController {
             }
         }
     }
-    
+
+    private func handleText(attachment: NSItemProvider) {
+        attachment.loadItem(forTypeIdentifier: UTType.plainText.identifier, options: nil) { (item, error) in
+            guard
+                let text = item as? String,
+                let url = URL(string: text.trimmingCharacters(in: .whitespacesAndNewlines))
+            else { return }
+
+            self.saveURL(url: url)
+        }
+    }
+
     private func handleVideo(attachment: NSItemProvider) {
         attachment.loadItem(forTypeIdentifier: UTType.movie.identifier as String, options: nil) { (item, error) in
             if let url = item as? URL {
@@ -47,11 +61,11 @@ class ShareViewController: SLComposeServiceViewController {
             }
         }
     }
-    
+
     private func saveURL(url: URL) {
         let sharedDefaults = UserDefaults(suiteName: "group.net.thomasdye.TDS-docs")
         sharedDefaults?.set(url.absoluteString, forKey: "TDVideo-SharedURL")
-        
+
         // Post cross-process notification
                let notificationName = "group.net.thomasdye.TDS-docs.TDVideo-SharedURL"
                CFNotificationCenterPostNotification(
@@ -68,14 +82,37 @@ class ShareViewController: SLComposeServiceViewController {
 
 
 
-    
+
     private func saveVideo(url: URL) {
-        saveURL(url: url)
+        let fileManager = FileManager.default
+        guard let containerURL = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "group.net.thomasdye.TDS-docs") else {
+            saveURL(url: url)
+            return
+        }
+
+        let videosDirectory = containerURL.appendingPathComponent("SharedVideos", isDirectory: true)
+
+        do {
+            try fileManager.createDirectory(at: videosDirectory, withIntermediateDirectories: true)
+            let destinationURL = videosDirectory
+                .appendingPathComponent(UUID().uuidString)
+                .appendingPathExtension(url.pathExtension.isEmpty ? "mov" : url.pathExtension)
+
+            if fileManager.fileExists(atPath: destinationURL.path) {
+                try fileManager.removeItem(at: destinationURL)
+            }
+
+            try fileManager.copyItem(at: url, to: destinationURL)
+            saveURL(url: destinationURL)
+        } catch {
+            print("Failed to copy shared video: \(error.localizedDescription)")
+            saveURL(url: url)
+        }
     }
     private func openAppWithURL(url: URL) {
         let encodedURL = url.absoluteString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         let scheme = "TDSVideo://shared-url?url=\(encodedURL)"
-        
+
         if let appURL = URL(string: scheme) {
             DispatchQueue.main.async {
                 self.extensionContext?.open(appURL, completionHandler: { success in
@@ -91,7 +128,7 @@ class ShareViewController: SLComposeServiceViewController {
         }
     }
 
-    
+
     override func configurationItems() -> [Any]! {
         return []
     }

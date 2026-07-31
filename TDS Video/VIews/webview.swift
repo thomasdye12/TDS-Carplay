@@ -11,65 +11,163 @@ import WebKit
 struct WebView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> CustomWebViewController {
         let webViewController = CustomWebViewController.shared
-        CustomWebViewController.shared.IsIncar = false
+        webViewController.applyIOSLayoutForBrowser()
         return webViewController
     }
 
-    func updateUIViewController(_ uiViewController: CustomWebViewController, context: Context) {}
+    func updateUIViewController(_ uiViewController: CustomWebViewController, context: Context) {
+        uiViewController.applyIOSLayoutForBrowser()
+    }
 }
 
 struct WebViewContainer: View {
+    @Environment(\.dismiss) private var dismiss
     @State private var showCarButtons = false
     @State private var showURLInput = false
     @State private var userInputURL: String = ""
+    @State private var quickSelects: [WebQuickSelect] = CustomWebViewController.shared.loadQuickSelects()
+    @AppStorage(TDSBrowserSettings.iOSBrowserEngineKey) private var browserEngine = TDSIOSBrowserEngine.standard.rawValue
+
+    private var usesMinimalBrowser: Bool {
+        browserEngine == TDSIOSBrowserEngine.minimal.rawValue
+    }
 
     var body: some View {
-        ZStack {
-            WebView()
-                .ignoresSafeArea()
+        ZStack(alignment: .top) {
+            if usesMinimalBrowser {
+                MinimalBrowserRepresentable(initialURLString: CustomWebViewController.youtubeURL.absoluteString)
+                    .ignoresSafeArea()
+            } else {
+                WebView()
+                    .ignoresSafeArea()
+            }
 
             // You could place overlay loading UI or status feedback here
+
+            browserOverlayControls
+                .safeAreaPadding(.top, 6)
+                .padding(.horizontal, 10)
         }
-        .navigationTitle("Web Browser")
+        .navigationTitle(usesMinimalBrowser ? "Custom Browser" : "Web Browser")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItemGroup(placement: .bottomBar) {
-                Button {
-                    CustomWebViewController.shared.loadURL(URL(string: "https://google.com")!)
-                } label: {
-                    Label("Google", systemImage: "globe")
-                }
-
-                Button {
-                    TDSVideoShared.shared.CarPlayComp?(.init(type: .web, URL: nil))
-                } label: {
-                    Label("To Car", systemImage: "car.fill")
-                }
-
-                Menu {
-                    Button("Control Page Buttons") {
-                        showCarButtons = true
-                    }
-                    Button("Enter URL") {
-                        showURLInput = true
-                    }
-                } label: {
-                    Label("More", systemImage: "ellipsis.circle")
-                }
-            }
-        }
+        .toolbar(.hidden, for: .navigationBar)
         .sheet(isPresented: $showURLInput) {
             URLInputSheet(showURLInput: $showURLInput, userInputURL: $userInputURL)
         }
         .sheet(isPresented: $showCarButtons) {
             WebViewButtons()
         }
+        .onAppear {
+            quickSelects = CustomWebViewController.shared.loadQuickSelects()
+        }
+    }
+
+    private var browserOverlayControls: some View {
+        HStack(spacing: 8) {
+            Button {
+                dismiss()
+            } label: {
+                Image(systemName: "chevron.backward")
+                    .browserOverlayButton()
+            }
+            .accessibilityLabel("Close Browser")
+
+            Spacer()
+
+            Button {
+                loadURL(CustomWebViewController.youtubeSignInURL)
+            } label: {
+                Image(systemName: "person.crop.circle")
+                    .browserOverlayButton()
+            }
+            .accessibilityLabel("YouTube Sign In")
+
+            Button {
+                TDSVideoShared.shared.CarPlayComp?(.init(type: .web, URL: nil))
+            } label: {
+                Image(systemName: "car.fill")
+                    .browserOverlayButton()
+            }
+            .accessibilityLabel("Send Browser to CarPlay")
+
+            browserMenu
+        }
+    }
+
+    private var browserMenu: some View {
+        Menu {
+            Button("YouTube Sign In / Switch Account", systemImage: "person.crop.circle") {
+                loadURL(CustomWebViewController.youtubeSignInURL)
+            }
+
+            Button("Google", systemImage: "globe") {
+                loadURL(URL(string: "https://google.com")!)
+            }
+
+            ForEach(quickSelects) { quickSelect in
+                Button(quickSelect.title) {
+                    if let url = URL(string: quickSelect.urlString) {
+                        loadURL(url)
+                        TDSVideoShared.shared.CarPlayComp?(.init(type: .web, URL: url))
+                    }
+                }
+            }
+
+            Divider()
+
+            Button("Save Current URL") {
+                CustomWebViewController.shared.saveCurrentURLAsQuickSelect()
+                quickSelects = CustomWebViewController.shared.loadQuickSelects()
+            }
+
+            if usesMinimalBrowser {
+                Button("Back") {
+                    MinimalBrowserHost.shared.goBack()
+                }
+                Button("Forward") {
+                    MinimalBrowserHost.shared.goForward()
+                }
+                Button("Reload") {
+                    MinimalBrowserHost.shared.reload()
+                }
+            }
+
+            Button("Control Page Buttons") {
+                showCarButtons = true
+            }
+            Button("Enter URL") {
+                showURLInput = true
+            }
+        } label: {
+            Image(systemName: "ellipsis")
+                .browserOverlayButton()
+        }
+        .accessibilityLabel("Browser Menu")
+    }
+
+    private func loadURL(_ url: URL) {
+        if usesMinimalBrowser {
+            MinimalBrowserHost.shared.loadURL(url)
+        } else {
+            CustomWebViewController.shared.loadURL(url)
+        }
+    }
+}
+
+private extension View {
+    func browserOverlayButton() -> some View {
+        self
+            .font(.title3.weight(.semibold))
+            .foregroundStyle(.white)
+            .frame(width: 42, height: 42)
+            .background(Color.black.opacity(0.72), in: Circle())
     }
 }
 
 struct URLInputSheet: View {
     @Binding var showURLInput: Bool
     @Binding var userInputURL: String
+    @AppStorage(TDSBrowserSettings.iOSBrowserEngineKey) private var browserEngine = TDSIOSBrowserEngine.standard.rawValue
     @FocusState private var urlFieldFocused: Bool
 
     var body: some View {
@@ -84,7 +182,7 @@ struct URLInputSheet: View {
 
                     Button("Load URL") {
                         if let url = URL(string: userInputURL.trimmingCharacters(in: .whitespacesAndNewlines)) {
-                            CustomWebViewController.shared.loadURL(url)
+                            loadURL(url)
                             showURLInput = false
                         } else {
                             print("Invalid URL")
@@ -96,7 +194,7 @@ struct URLInputSheet: View {
                 Section(header: Text("Shared URL")) {
                     if let shared = loadSharedURL() {
                         Button("Load Shared URL: \(shared.absoluteString)") {
-                            CustomWebViewController.shared.loadURL(shared)
+                            loadURL(shared)
                             showURLInput = false
                         }
                     } else {
@@ -120,5 +218,13 @@ struct URLInputSheet: View {
 
     func loadSharedURL() -> URL? {
         TDSVideoShared.shared.loadSharedURL()
+    }
+
+    private func loadURL(_ url: URL) {
+        if browserEngine == TDSIOSBrowserEngine.minimal.rawValue {
+            MinimalBrowserHost.shared.loadURL(url)
+        } else {
+            CustomWebViewController.shared.loadURL(url)
+        }
     }
 }

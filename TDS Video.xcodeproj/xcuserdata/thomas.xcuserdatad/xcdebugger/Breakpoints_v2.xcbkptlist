@@ -14,10 +14,10 @@
             filePath = "TDS Video/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "AppDelegate"
-            landmarkType = "3">
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "application(_:configurationForConnecting:options:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -30,10 +30,10 @@
             filePath = "TDS Video/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "AppDelegate"
-            landmarkType = "3">
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "application(_:configurationForConnecting:options:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -45,14 +45,6 @@
             continueAfterRunningActions = "No"
             symbolName = "*0x1b2923324">
             <Locations>
-               <Location
-                  uuid = "86574707-86A3-466F-9338-17E3EA5B7F69 - 4205339b061290da"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "*0x1b2923324"
-                  usesParentBreakpointCondition = "Yes">
-               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -65,14 +57,6 @@
             continueAfterRunningActions = "No"
             symbolName = "*0x1b2923324">
             <Locations>
-               <Location
-                  uuid = "090D90A7-48AA-44DE-91F3-A1C0DD5E39F7 - 4205339b061290da"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "*0x1b2923324"
-                  usesParentBreakpointCondition = "Yes">
-               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -85,14 +69,6 @@
             continueAfterRunningActions = "No"
             symbolName = "*0x1b292344c">
             <Locations>
-               <Location
-                  uuid = "96AF5124-7441-4305-B1B0-D1DF14E6A1B6 - 4205339b1656b50c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "*0x1b292344c"
-                  usesParentBreakpointCondition = "Yes">
-               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -1654,8 +1630,8 @@
             filePath = "TDS Video/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
             landmarkName = "application(_:configurationForConnecting:options:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1760,14 +1736,6 @@
             continueAfterRunningActions = "No"
             symbolName = "*0x185c50268">
             <Locations>
-               <Location
-                  uuid = "488992AD-0A4E-4223-A878-223F15A2E704 - 928de96b9ba9f3e4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "*0x185c50268"
-                  usesParentBreakpointCondition = "Yes">
-               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -1780,14 +1748,6 @@
             continueAfterRunningActions = "No"
             symbolName = "*0x185c50274">
             <Locations>
-               <Location
-                  uuid = "326B97BD-F406-47FB-B8B9-7763FBA599E9 - 928de96b9bb9c4e1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "*0x185c50274"
-                  usesParentBreakpointCondition = "Yes">
-               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -1943,28 +1903,28 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "E0FDBCE1-E483-4CC1-B98D-10CFFA76A8AD - 438e8a7cea8d57f2"
+                  uuid = "E0FDBCE1-E483-4CC1-B98D-10CFFA76A8AD - a81e83ac5230ff3e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "TDS_Video.TDSVideoShared.setPlayer(__C.AVPlayerViewController) -&gt; ()"
                   moduleName = "TDS Video.debug.dylib"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/thomas/xcode/TDS%20Video/TDS%20Video/MDapiClass.swift"
+                  urlString = "file:///Users/thomas/xcode/TDS%20Carplay%20Player/TDS%20Video/MDapiClass.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "58"
                   endingLineNumber = "58">
                </Location>
                <Location
-                  uuid = "E0FDBCE1-E483-4CC1-B98D-10CFFA76A8AD - 438e8a7cea8d57f2"
+                  uuid = "E0FDBCE1-E483-4CC1-B98D-10CFFA76A8AD - a81e83ac5230ff3e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "TDS_Video.TDSVideoShared.setPlayer(__C.AVPlayerViewController) -&gt; ()"
                   moduleName = "TDS Video.debug.dylib"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/thomas/xcode/TDS%20Video/TDS%20Video/MDapiClass.swift"
+                  urlString = "file:///Users/thomas/xcode/TDS%20Carplay%20Player/TDS%20Video/MDapiClass.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "58"
@@ -1989,28 +1949,28 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "6E371B02-9790-448F-AC6D-79F5ACAF439E - 438e8a7cea8d57d3"
+                  uuid = "6E371B02-9790-448F-AC6D-79F5ACAF439E - a81e83ac5230ff1f"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "TDS_Video.TDSVideoShared.setPlayer(__C.AVPlayerViewController) -&gt; ()"
                   moduleName = "TDS Video.debug.dylib"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/thomas/xcode/TDS%20Video/TDS%20Video/MDapiClass.swift"
+                  urlString = "file:///Users/thomas/xcode/TDS%20Carplay%20Player/TDS%20Video/MDapiClass.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "59"
                   endingLineNumber = "59">
                </Location>
                <Location
-                  uuid = "6E371B02-9790-448F-AC6D-79F5ACAF439E - 438e8a7cea8d57d3"
+                  uuid = "6E371B02-9790-448F-AC6D-79F5ACAF439E - a81e83ac5230ff1f"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "TDS_Video.TDSVideoShared.setPlayer(__C.AVPlayerViewController) -&gt; ()"
                   moduleName = "TDS Video.debug.dylib"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/thomas/xcode/TDS%20Video/TDS%20Video/MDapiClass.swift"
+                  urlString = "file:///Users/thomas/xcode/TDS%20Carplay%20Player/TDS%20Video/MDapiClass.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "59"
@@ -2035,28 +1995,28 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "C85CCABC-B406-4673-A996-F471C3C659EF - 438e8a7cea8d57f2"
+                  uuid = "C85CCABC-B406-4673-A996-F471C3C659EF - a81e83ac5230ff3e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "TDS_Video.TDSVideoShared.setPlayer(__C.AVPlayerViewController) -&gt; ()"
                   moduleName = "TDS Video.debug.dylib"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/thomas/xcode/TDS%20Video/TDS%20Video/MDapiClass.swift"
+                  urlString = "file:///Users/thomas/xcode/TDS%20Carplay%20Player/TDS%20Video/MDapiClass.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "58"
                   endingLineNumber = "58">
                </Location>
                <Location
-                  uuid = "C85CCABC-B406-4673-A996-F471C3C659EF - 438e8a7cea8d57f2"
+                  uuid = "C85CCABC-B406-4673-A996-F471C3C659EF - a81e83ac5230ff3e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "TDS_Video.TDSVideoShared.setPlayer(__C.AVPlayerViewController) -&gt; ()"
                   moduleName = "TDS Video.debug.dylib"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/thomas/xcode/TDS%20Video/TDS%20Video/MDapiClass.swift"
+                  urlString = "file:///Users/thomas/xcode/TDS%20Carplay%20Player/TDS%20Video/MDapiClass.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "58"
@@ -2123,8 +2083,8 @@
             filePath = "TDS Video/TDSVideoAPI.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "sendDeviceUUID(UUID:callCount:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2139,8 +2099,8 @@
             filePath = "TDS Video/TDSVideoAPI.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "sendDeviceUUID(UUID:callCount:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2155,9 +2115,9 @@
             filePath = "CarPlaySceneDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
-            landmarkName = "playVideo(url:)"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
+            landmarkName = "interfaceController(_:didConnectWith:style:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2171,9 +2131,9 @@
             filePath = "CarPlaySceneDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
-            landmarkName = "playVideo(url:)"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
+            landmarkName = "interfaceController(_:didConnectWith:style:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2187,9 +2147,9 @@
             filePath = "CarPlaySceneDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
-            landmarkName = "playVideo(url:)"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
+            landmarkName = "rawVideo(player:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2203,9 +2163,9 @@
             filePath = "CarPlaySceneDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
-            landmarkName = "playVideo(url:)"
+            startingLineNumber = "311"
+            endingLineNumber = "311"
+            landmarkName = "rawVideo(player:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2279,8 +2239,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
             endingLineNumber = "86"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
-            landmarkType = "7">
+            landmarkName = "TDSLocationAPI"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2311,8 +2271,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "56"
             endingLineNumber = "56"
-            landmarkName = "CombinedValue()"
-            landmarkType = "7">
+            landmarkName = "TDSLocationAPI"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2327,8 +2287,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
             endingLineNumber = "51"
-            landmarkName = "CombinedValue()"
-            landmarkType = "7">
+            landmarkName = "TDSLocationAPI"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2343,8 +2303,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
             endingLineNumber = "54"
-            landmarkName = "CombinedValue()"
-            landmarkType = "7">
+            landmarkName = "TDSLocationAPI"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2361,6 +2321,112 @@
             endingLineNumber = "91"
             landmarkName = "unknown"
             landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "22ABB3ED-BC88-48D0-A31E-8C2EF26FE16A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CarPlaySceneDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "templateApplicationScene(_:didConnect:to:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CDFC7666-0BB8-4E29-8534-4AA65D82472D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CarPlaySceneDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "templateApplicationScene(_:didConnect:to:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
+         <BreakpointContent
+            uuid = "344C49C3-C343-4630-AAAB-6F40A3A2F9A5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            symbolName = "+[CPWindow alloc]"
+            moduleName = "">
+            <Locations>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
+         <BreakpointContent
+            uuid = "331CC8E1-31B4-436D-BB17-85D0BACF39FE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            symbolName = "-[CPWindow initWithFrame:]"
+            moduleName = "">
+            <Locations>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
+         <BreakpointContent
+            uuid = "896222DC-51B9-4153-99A4-1A722D5652E2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            symbolName = "-[CPWindow initWithFrame:templateScene:]"
+            moduleName = "">
+            <Locations>
+               <Location
+                  uuid = "896222DC-51B9-4153-99A4-1A722D5652E2 - dda52ca4047f2b02"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CPWindow initWithFrame:templateScene:]"
+                  moduleName = "CarPlay"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
+         <BreakpointContent
+            uuid = "1D09AC97-BB29-4C58-9425-0E39D0206264"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            symbolName = "-[CPSTemplateEnvironment hasAnyTemplateEntitlement]"
+            moduleName = "">
+            <Locations>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
+         <BreakpointContent
+            uuid = "1AA1ECE5-ED05-45BD-8467-793ED44C6704"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            symbolName = "-[DBSceneHostViewController _installScenePresentationView]"
+            moduleName = "">
+            <Locations>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

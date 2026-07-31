@@ -8,6 +8,7 @@
 //#import "UIPhysicalButtonInteraction.h"
 #import "AVPlayerViewController+Swizzling.h"
 #import "AVPlayerViewController+ButtonInteractionSwizzling.h"
+#import "../WebBrowser/MinimalBrowserViewController.h"
 //#import "AVSystemVolumeController.h"
 
 //#import "TDS_Video-Swift.h"

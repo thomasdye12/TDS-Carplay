@@ -10,11 +10,10 @@ import UIKit
 
 class TDSCarplayAccess {
     static var shared = TDSCarplayAccess()
-    
+
     private let settingsKey = "ShowTDSCarPlaySettings"
-    
+
     var ShowTDSCarPlaySettings: Bool = true
-    
     var DisableIsStationary: Bool {
         get {
             UserDefaults.standard.bool(forKey: settingsKey)
@@ -26,11 +25,14 @@ class TDSCarplayAccess {
 
 
     private init() {
-        // Optionally initialize from UserDefaults here if needed
-     
+        ShowTDSCarPlaySettings = true
+        UserDefaults.standard.set(true, forKey: settingsKey)
     }
 
-  
+    func CheckIfShowCarPlaySettings() {
+        ShowTDSCarPlaySettings = true
+        UserDefaults.standard.set(true, forKey: settingsKey)
+    }
 
 }
 

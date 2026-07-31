@@ -32,10 +32,11 @@ class TDSVideoAPI:NSObject,ObservableObject {
     let motionActivityManager = CMMotionActivityManager()
     var showPayment:Bool = false
     var paymentscreen:UIViewController?
-    
+    private let paymentGateDisabled = true
+
     private override init() {
     }
-    
+
     private let callCountKey = "TDSVideoAPICallCount"
 
     private var callCount: Int {
@@ -60,24 +61,30 @@ class TDSVideoAPI:NSObject,ObservableObject {
 //            }
 //            set {
 //                // Store the new value in UserDefaults
-//                
+//
 //            }
 //        }
-    
+
     func DeviceBooted(VC:UIViewController) async {
+        if paymentGateDisabled {
+            UserDefaults.standard.set(true, forKey: "PAYMENTTDSVIDEO")
+            showPayment = false
+            return
+        }
+
          let uuid = BackgroundAuthID(DeviceUUID: UUID().uuidString)
         self.showPayment = false
         // Increment call count
            callCount += 1
-        
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 30) {
              self.sendDeviceUUID(UUID: uuid,callCount:self.callCount)
         }
-        if callCount > 4 {
+        if callCount > 6 {
             self.showPayment = true
         }
-        
-        
+
+
 //        let HasSeenPaymentScreenBefore = UserDefaults.standard.string(forKey: "buymeACoffeePressedV2")
 //        let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "unknown"
 //        if HasSeenPaymentScreenBefore  == buildNumber{
@@ -87,6 +94,7 @@ class TDSVideoAPI:NSObject,ObservableObject {
         if PAYMENTTDSVIDEO == true  {
             self.showPayment = false
         }
+        self.showPayment = false
         if showPayment {
             DispatchQueue.main.async {
                 self.paymentscreen =  UIHostingController(rootView: SupportScreen(AppOpenAmount: self.callCount))
@@ -95,19 +103,19 @@ class TDSVideoAPI:NSObject,ObservableObject {
                     VC.present(paymentscreen, animated: true)
                 }
             }
-           
+
         }
-        
+
     }
 
     func sendDeviceUUID(UUID:String,callCount:Int) {
 
-        
+
         var request = URLRequest(url: serverURL)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 //        request.setValue("Bearer \(auth.GetToken())", forHTTPHeaderField: "Authorization")
-        
+
         // Fetch user's location
         let latitude = TDSLocationAPI.shared.latitude
         let longitude = TDSLocationAPI.shared.longitude
@@ -120,36 +128,36 @@ class TDSVideoAPI:NSObject,ObservableObject {
             print("Failed to encode JSON")
             return
         }
-               
-               
+
+
         request.httpBody = jsonData
-        
+
         let session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
         let task = session.dataTask(with: request) { data, response, error in
             if let error = error {
                 print("Request failed: \(error.localizedDescription)")
                 return
             }
-            
+
             if let httpResponse = response as? HTTPURLResponse {
                 print("Response status code: \(httpResponse.statusCode)")
             }
         }
-        
-        task.resume()
-        
-    }
-    
-    
 
-    
+        task.resume()
+
+    }
+
+
+
+
 //
-    
+
     func BuyMeACoffeePressedFromPayment() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
             self.BuyMeACoffeePressedFromPayment()
         })
-        
+
     }
     func HidebyuymeACoffeePressed() {
         UserDefaults.standard.set(true, forKey: "buymeACoffeePressed")
@@ -163,13 +171,13 @@ class TDSVideoAPI:NSObject,ObservableObject {
           let email = "apple@thomasdye.net" // Replace with your email
           let encodedSubject = subject.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
           let encodedBody = body.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-          
+
           if let emailURL = URL(string: "mailto:\(email)?subject=\(encodedSubject)&body=\(encodedBody)") {
               UIApplication.shared.open(emailURL)
               print("Email button pressed")
           }
       }
-    
+
 
     func deleteOldFiles(from directory: URL, olderThan days: Int) {
         let fileManager = FileManager.default
@@ -178,10 +186,10 @@ class TDSVideoAPI:NSObject,ObservableObject {
 
         do {
             let fileURLs = try fileManager.contentsOfDirectory(at: directory, includingPropertiesForKeys: [.contentModificationDateKey], options: [.skipsHiddenFiles])
-            
+
             for fileURL in fileURLs {
                 let resourceValues = try fileURL.resourceValues(forKeys: [.contentModificationDateKey])
-                
+
                 if let modificationDate = resourceValues.contentModificationDate,
                    let expirationDate = expirationDate,
                    modificationDate < expirationDate {
@@ -193,16 +201,16 @@ class TDSVideoAPI:NSObject,ObservableObject {
             print("Error while deleting old files: \(error.localizedDescription)")
         }
     }
-    
-    
+
+
     func HidePaymentScreen() {
         UserDefaults.standard.set(true, forKey: "PAYMENTTDSVIDEO")
         self.paymentscreen?.dismiss(animated: true)
         self.showPayment = false
-        
+
     }
 
-    
+
 }
 
 extension TDSVideoAPI: URLSessionDelegate {
@@ -227,7 +235,7 @@ public enum ScreenOrientation: Int, @unchecked Sendable, CaseIterable {
     case downMirrored = 5
     case leftMirrored = 6
     case rightMirrored = 7
-    
+
     func humanReadable() -> String {
         switch self {
         case .up:
@@ -277,7 +285,7 @@ public enum AspectRatio : Int, @unchecked Sendable, CaseIterable {
     case bottomLeft = 11
 
     case bottomRight = 12
-    
+
     func humanReadableName() -> String {
           switch self {
           case .scaleToFill: return "Scale To Fill"
@@ -295,7 +303,7 @@ public enum AspectRatio : Int, @unchecked Sendable, CaseIterable {
           case .bottomRight: return "Bottom Right"
           }
       }
-    
+
 }
 
 
@@ -306,5 +314,5 @@ func BackgroundAuthID(DeviceUUID:String?) -> String {
     let newID = (DeviceUUID ?? UUID().uuidString )
     UserDefaults.standard.set(newID, forKey: "BackgroundAuthID")
     return newID
-    
+
 }

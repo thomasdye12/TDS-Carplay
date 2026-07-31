@@ -10,12 +10,20 @@
 	</array>
 	<key>com.apple.developer.carplay-calling</key>
 	<true/>
+	<key>com.apple.developer.carplay-charging</key>
+	<true/>
 	<key>com.apple.developer.carplay-communication</key>
+	<true/>
+	<key>com.apple.developer.carplay-driving-task</key>
+	<true/>
+	<key>com.apple.developer.carplay-maps</key>
+	<true/>
+	<key>com.apple.developer.carplay-messaging</key>
+	<true/>
+	<key>com.apple.developer.carplay-voice-based-conversation</key>
 	<true/>
 	<key>com.apple.developer.kernel.increased-memory-limit</key>
 	<true/>
-	<key>com.apple.developer.networking.networkextension</key>
-	<array/>
 	<key>com.apple.security.application-groups</key>
 	<array>
 		<string>group.net.thomasdye.Auth_Creds</string>

@@ -1,0 +1,15 @@
+//
+//  Config.xcconfig
+//  TDS Video
+//
+//  Created by Thomas Dye on 02/08/2025.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
+
+
+// Development.xcconfig
+APP_BUNDLE_IDENTIFIER = net.thomasdye.TDS-Video2
+
+

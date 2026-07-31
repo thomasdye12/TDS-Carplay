@@ -12,6 +12,12 @@ struct Help: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 Group {
+                    
+                    Text("Due to changes to CarPlay in IOS26 THIS APP IS NO LONGER SUPPORTED. If you are on an older IOS you should have no Issues.")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    
+                    
                     Text("📺 Screen Recording Setup")
                         .font(.headline)
                     
