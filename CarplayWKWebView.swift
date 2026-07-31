@@ -2801,30 +2801,6 @@ class CustomWebViewController: CarPlayViewControllerProtocol, WKNavigationDelega
         }
     }
 
-    func pauseYouTubeVideoForPicker() {
-        guard isYouTubeURL(webView?.url) else { return }
-        let js = """
-        (function() {
-            const video = document.querySelector('video');
-            const moviePlayer = document.querySelector('#movie_player');
-            if (moviePlayer && typeof moviePlayer.pauseVideo === 'function') {
-                moviePlayer.pauseVideo();
-            }
-            if (video && !video.paused) {
-                video.pause();
-            }
-            return Boolean(video || moviePlayer);
-        })();
-        """
-        webView?.evaluateJavaScript(js) { result, error in
-            if let error {
-                print("TDS YouTube picker pause failed: \(error.localizedDescription)")
-            } else {
-                print("TDS YouTube picker paused current video: \(String(describing: result))")
-            }
-        }
-    }
-
     func toggleCurrentPageVideoPlayback() {
         let js = """
         (function() {

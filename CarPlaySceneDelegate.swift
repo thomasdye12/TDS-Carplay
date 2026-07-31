@@ -518,7 +518,6 @@ class CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate, CPM
 
     private func showYouTubeSearch() {
         guard youtubeNativeSearchEnabled, let interfaceController else { return }
-        CustomWebViewController.shared.pauseYouTubeVideoForPicker()
         youtubeSearchText = ""
         youtubeSearchResults = []
         youtubeSearchGeneration += 1
@@ -683,7 +682,6 @@ class CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate, CPM
 
     private func showYouTubeRecommendations() {
         guard youtubeNativeRecommendationsEnabled, let interfaceController else { return }
-        CustomWebViewController.shared.pauseYouTubeVideoForPicker()
         youtubeRecommendationsGeneration += 1
         let generation = youtubeRecommendationsGeneration
 
