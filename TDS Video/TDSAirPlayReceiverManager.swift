@@ -2,6 +2,7 @@ import AirPlayReceiver
 import AVFoundation
 import SwiftUI
 import UIKit
+import os
 
 @MainActor
 final class TDSAirPlayReceiverManager: ObservableObject {
@@ -21,6 +22,10 @@ final class TDSAirPlayReceiverManager: ObservableObject {
     private var standbyTimer: Timer?
     private var receiverViewConstraints: [NSLayoutConstraint] = []
     private var standbyViewConstraints: [NSLayoutConstraint] = []
+    private let logger = Logger(
+        subsystem: Bundle.main.bundleIdentifier ?? "net.thomasdye.TDS-Video2",
+        category: "AirPlayReceiver"
+    )
 
     private init() {
         let savedScale = UserDefaults.standard.object(forKey: Self.carPlayViewScaleKey) as? Double ?? Self.carPlayViewScaleDefault
@@ -57,20 +62,25 @@ final class TDSAirPlayReceiverManager: ObservableObject {
     }
 
     func setEnabled(_ enabled: Bool) {
+        log("setEnabled(\(enabled)); current=\(isEnabled), appState=\(UIApplication.shared.applicationState.rawValue), hasCarPlayContainer=\(carPlayContainer != nil)")
         guard enabled != isEnabled else { return }
 
         if enabled {
             do {
+                log("Starting AirPlayReceiverView named TDS Carplay")
                 try receiverView.start()
                 isEnabled = true
                 errorMessage = nil
+                log("AirPlayReceiverView.start() succeeded")
                 attachToCarPlayIfAvailable()
             } catch {
+                log("ERROR starting AirPlay receiver: \(error.localizedDescription)")
                 receiverView.stop()
                 isEnabled = false
                 errorMessage = error.localizedDescription
             }
         } else {
+            log("Stopping AirPlay receiver")
             NSLayoutConstraint.deactivate(receiverViewConstraints)
             NSLayoutConstraint.deactivate(standbyViewConstraints)
             receiverViewConstraints = []
@@ -84,11 +94,13 @@ final class TDSAirPlayReceiverManager: ObservableObject {
     }
 
     func registerCarPlayContainer(_ container: UIView) {
+        log("CarPlay container registered; bounds=\(container.bounds)")
         carPlayContainer = container
         attachToCarPlayIfAvailable()
     }
 
     func unregisterCarPlayContainer() {
+        log("CarPlay container unregistered")
         NSLayoutConstraint.deactivate(receiverViewConstraints)
         NSLayoutConstraint.deactivate(standbyViewConstraints)
         receiverViewConstraints = []
@@ -105,12 +117,20 @@ final class TDSAirPlayReceiverManager: ObservableObject {
     @objc private func appDidEnterBackground() {
         // A connected CarPlay scene can remain active after the phone scene is
         // backgrounded. Keep receiving while that visible scene owns the view.
-        guard carPlayContainer == nil else { return }
+        guard carPlayContainer == nil else {
+            log("App backgrounded but CarPlay container remains active; keeping receiver running")
+            return
+        }
+        log("App backgrounded without CarPlay container; stopping receiver")
         setEnabled(false)
     }
 
     private func attachToCarPlayIfAvailable() {
-        guard isEnabled, let container = carPlayContainer else { return }
+        guard isEnabled, let container = carPlayContainer else {
+            log("Receiver not attached: enabled=\(isEnabled), hasCarPlayContainer=\(carPlayContainer != nil)")
+            return
+        }
+        log("Attaching receiver view to CarPlay at scale \(carPlayViewScale)")
 
         NSLayoutConstraint.deactivate(receiverViewConstraints)
         NSLayoutConstraint.deactivate(standbyViewConstraints)
@@ -162,6 +182,11 @@ final class TDSAirPlayReceiverManager: ObservableObject {
     private func stopStandbyUpdates() {
         standbyTimer?.invalidate()
         standbyTimer = nil
+    }
+
+    private func log(_ message: String) {
+        logger.notice("\(message, privacy: .public)")
+        print("[AirPlayReceiver] \(message)")
     }
 }
 

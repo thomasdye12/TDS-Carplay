@@ -67,6 +67,7 @@ struct MinimalBrowserRepresentable: UIViewControllerRepresentable {
 
 struct AppSettingsView: View {
     @StateObject private var airPlayReceiver = TDSAirPlayReceiverManager.shared
+    @StateObject private var selfAirPlay = TDSSelfAirPlayManager.shared
     @AppStorage(TDSBrowserSettings.iOSBrowserEngineKey) private var browserEngine = TDSIOSBrowserEngine.standard.rawValue
     @AppStorage(CustomWebViewController.youtubeFullscreenEnabledKey) private var youtubeFullscreenEnabled = true
     @AppStorage(CustomWebViewController.youtubeAutoFitEnabledKey) private var youtubeAutoFitEnabled = true
@@ -85,6 +86,7 @@ struct AppSettingsView: View {
                         get: { airPlayReceiver.isEnabled },
                         set: { airPlayReceiver.setEnabled($0) }
                     ))
+                    .disabled(selfAirPlay.state.isEnabled)
 
                     LabeledContent("Receiver name", value: "TDS Carplay")
 
@@ -111,6 +113,21 @@ struct AppSettingsView: View {
                             .font(.footnote)
                             .foregroundStyle(.secondary)
                     }
+                }
+
+                Section("Self AirPlay (Experimental)") {
+                    Toggle("Show on this iPhone", isOn: Binding(
+                        get: { selfAirPlay.state.isEnabled },
+                        set: { selfAirPlay.setEnabled($0) }
+                    ))
+
+                    Text(selfAirPlay.state.description)
+                        .font(.footnote)
+                        .foregroundStyle(selfAirPlayErrorColor)
+
+                    Text("This creates a local VPN that makes the receiver look like a separate device at 198.18.0.2. It cannot be used at the same time as another VPN.")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                 }
 
                 Section("iOS Browser") {
@@ -229,6 +246,11 @@ struct AppSettingsView: View {
             }
             .navigationTitle("Settings")
         }
+    }
+
+    private var selfAirPlayErrorColor: Color {
+        if case .error = selfAirPlay.state { return .red }
+        return .secondary
     }
 
     private func startLiveControls() {

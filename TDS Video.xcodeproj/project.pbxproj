@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A2A2A2A12F10000100000001 /* SelfAirPlayTunnel.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A2A2A2A12F10000100000003 /* SelfAirPlayTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2C2D0B54C6848E0E434BECFF /* TDSCarPlayControlsWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E3AA5FBEFEF12C032F964D59 /* TDSCarPlayControlsWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A1A1A1A12F00000100000001 /* AirPlayReceiver in Frameworks */ = {isa = PBXBuildFile; productRef = A1A1A1A12F00000100000003 /* AirPlayReceiver */; };
 		A83FC8C7ACC2C7AF1E8F9FBF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA98FA29EA555E83C45AADAE /* Foundation.framework */; };
@@ -42,6 +43,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A2A2A2A12F10000100000002 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E9B371172C5D7B830013612E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A2A2A2A12F10000100000008;
+			remoteInfo = SelfAirPlayTunnel;
+		};
 		7D4E270682EB9064EFEC4035 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E9B371172C5D7B830013612E /* Project object */;
@@ -93,6 +101,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				A2A2A2A12F10000100000001 /* SelfAirPlayTunnel.appex in Embed Foundation Extensions */,
 				E9E926C12D934C5C00762912 /* UploadVideo.appex in Embed Foundation Extensions */,
 				E9B371BD2C5D86080013612E /* CarplayintentUI.appex in Embed Foundation Extensions */,
 				E9B371C02C5D86080013612E /* Carplayintent.appex in Embed Foundation Extensions */,
@@ -106,6 +115,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A2A2A2A12F10000100000003 /* SelfAirPlayTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SelfAirPlayTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		19C5FAFFB12297CEF104A69C /* ../TDS Video/TDSCarPlayControlShared.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "../TDS Video/TDSCarPlayControlShared.swift"; sourceTree = "<group>"; };
 		1EAEE49E4CE7E2CA8425235D /* TDSCarPlayControlsWidget.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = TDSCarPlayControlsWidget.entitlements; sourceTree = "<group>"; };
 		30EC028B761D645CE91C64D9 /* TDSCarPlayControlsWidget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TDSCarPlayControlsWidget.swift; sourceTree = "<group>"; };
@@ -135,6 +145,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A2A2A2A12F1000010000000D /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+				SelfAirPlayTunnel.entitlements,
+			);
+			target = A2A2A2A12F10000100000008 /* SelfAirPlayTunnel */;
+		};
 		E9449D222C616C4100EE64DF /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -246,6 +264,7 @@
 /* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		A2A2A2A12F10000100000004 /* SelfAirPlayTunnel */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A2A2A2A12F1000010000000D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = SelfAirPlayTunnel; sourceTree = "<group>"; };
 		E9449D152C616C4100EE64DF /* UploadVideo */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (E9449D222C616C4100EE64DF /* PBXFileSystemSynchronizedBuildFileExceptionSet */, E9449D232C616C4100EE64DF /* PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = UploadVideo; sourceTree = "<group>"; };
 		E96BB7372D32872C007BE3A8 /* ScreenRec */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (E96BB7542D32872D007BE3A8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = ScreenRec; sourceTree = "<group>"; };
 		E96BB7432D32872D007BE3A8 /* ScreenRecSetupUI */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (E96BB7502D32872D007BE3A8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = ScreenRecSetupUI; sourceTree = "<group>"; };
@@ -256,6 +275,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A2A2A2A12F10000100000005 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0E289C13AC99CCD801AEEFED /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -339,6 +365,7 @@
 		E9B371162C5D7B830013612E = {
 			isa = PBXGroup;
 			children = (
+				A2A2A2A12F10000100000004 /* SelfAirPlayTunnel */,
 				E9D0B87E2E3D7F2C008C70E9 /* Config.xcconfig */,
 				E9D0B8802E3D7F3B008C70E9 /* File.txt */,
 				E9B01EC72DB094DF008CDD3F /* README.md */,
@@ -365,6 +392,7 @@
 		E9B371202C5D7B830013612E /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				A2A2A2A12F10000100000003 /* SelfAirPlayTunnel.appex */,
 				E9B3711F2C5D7B830013612E /* TDS Video.app */,
 				E9B371A52C5D86080013612E /* Carplayintent.appex */,
 				E9B371B12C5D86080013612E /* CarplayintentUI.appex */,
@@ -391,6 +419,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A2A2A2A12F10000100000008 /* SelfAirPlayTunnel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A2A2A2A12F10000100000009 /* Build configuration list for PBXNativeTarget "SelfAirPlayTunnel" */;
+			buildPhases = (
+				A2A2A2A12F10000100000006 /* Sources */,
+				A2A2A2A12F10000100000005 /* Frameworks */,
+				A2A2A2A12F10000100000007 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				A2A2A2A12F10000100000004 /* SelfAirPlayTunnel */,
+			);
+			name = SelfAirPlayTunnel;
+			productName = SelfAirPlayTunnel;
+			productReference = A2A2A2A12F10000100000003 /* SelfAirPlayTunnel.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		692E1E2EF14B5D649215BA8A /* TDSCarPlayControlsWidget */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D04FA84B6A0425A18FC1257A /* Build configuration list for PBXNativeTarget "TDSCarPlayControlsWidget" */;
@@ -483,6 +531,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				A2A2A2A12F1000010000000C /* PBXTargetDependency */,
 				E9B371BC2C5D86080013612E /* PBXTargetDependency */,
 				E9B371BF2C5D86080013612E /* PBXTargetDependency */,
 				E96BB7482D32872D007BE3A8 /* PBXTargetDependency */,
@@ -553,6 +602,9 @@
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
+					A2A2A2A12F10000100000008 = {
+						CreatedOnToolsVersion = 16.0;
+					};
 					E9449D132C616C4100EE64DF = {
 						CreatedOnToolsVersion = 16.0;
 					};
@@ -591,6 +643,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				A2A2A2A12F10000100000008 /* SelfAirPlayTunnel */,
 				E9B3711E2C5D7B830013612E /* TDS Video */,
 				E9B371A42C5D86080013612E /* Carplayintent */,
 				E9B371B02C5D86080013612E /* CarplayintentUI */,
@@ -603,6 +656,13 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A2A2A2A12F10000100000007 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		817AC70FA1CBF929A2F8505F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -663,6 +723,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A2A2A2A12F10000100000006 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		18023725E7CB01C6242A9E87 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -724,6 +791,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		A2A2A2A12F1000010000000C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A2A2A2A12F10000100000008 /* SelfAirPlayTunnel */;
+			targetProxy = A2A2A2A12F10000100000002 /* PBXContainerItemProxy */;
+		};
 		564EDD19242369F0C2A607A7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = TDSCarPlayControlsWidget;
@@ -758,6 +830,58 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		A2A2A2A12F1000010000000A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9D0B87E2E3D7F2C008C70E9 /* Config.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SelfAirPlayTunnel/SelfAirPlayTunnel.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 5;
+				DEVELOPMENT_TEAM = K3S7UENN8E;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SelfAirPlayTunnel/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_IDENTIFIER).SelfAirPlayTunnel";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A2A2A2A12F1000010000000B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9D0B87E2E3D7F2C008C70E9 /* Config.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SelfAirPlayTunnel/SelfAirPlayTunnel.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 5;
+				DEVELOPMENT_TEAM = K3S7UENN8E;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SelfAirPlayTunnel/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_IDENTIFIER).SelfAirPlayTunnel";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		CF26107432EA9AEA5B3FBCDF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1333,6 +1457,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A2A2A2A12F10000100000009 /* Build configuration list for PBXNativeTarget "SelfAirPlayTunnel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2A2A2A12F1000010000000A /* Debug */,
+				A2A2A2A12F1000010000000B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D04FA84B6A0425A18FC1257A /* Build configuration list for PBXNativeTarget "TDSCarPlayControlsWidget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
